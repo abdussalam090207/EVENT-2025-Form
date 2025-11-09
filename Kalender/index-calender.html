@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELC Group - Kalender Event</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles-calender.css">
+    <link rel="stylesheet" href="/Halaman Utama/styles-segment.css">
+</head>
+
+<body>
+    <!-- Toggle Theme Button -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/6289531657198" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Overlay for mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>ELC Group</h2>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="/Halaman Utama/index-segment.html"><i class="fas fa-info-circle"></i> <span>Info</span></a>
+            </li>
+            <li><a href="#"><i class="fas fa-newspaper"></i> <span>Berita</span></a></li>
+            <li><a href="#"><i class="fas fa-users"></i> <span>ELC Group</span></a></li>
+            <li><a href="Index-Calendar.html" class="active"><i class="fas fa-calendar-alt"></i> <span>Events</span></a>
+            </li>
+            <li><a href="#"><i class="fas fa-envelope"></i> <span>Kontak</span></a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header dengan Typing Text -->
+        <header class="header">
+            <div class="typing-container">
+                <div class="typing-text" id="typingText"></div>
+            </div>
+        </header>
+
+        <!-- Calendar Content -->
+        <section class="content">
+            <h2 class="content-title">Kalender Event ELC Group</h2>
+            <div class="calendar-container">
+                <!-- November 2025 -->
+                <div class="calendar-month">
+                    <div class="month-header">
+                        <h3 class="month-title">November 2025</h3>
+                        <div class="year">2025</div>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="calendar-day">Min</div>
+                        <div class="calendar-day">Sen</div>
+                        <div class="calendar-day">Sel</div>
+                        <div class="calendar-day">Rab</div>
+                        <div class="calendar-day">Kam</div>
+                        <div class="calendar-day">Jum</div>
+                        <div class="calendar-day">Sab</div>
+
+                        <!-- Empty days for November 2025 (starts on Saturday) -->
+                        <div class="calendar-date empty"></div>
+                        <div class="calendar-date empty"></div>
+                        <div class="calendar-date empty"></div>
+                        <div class="calendar-date empty"></div>
+                        <div class="calendar-date empty"></div>
+                        <div class="calendar-date empty"></div>
+                        <div class="calendar-date">1</div>
+                        <div class="calendar-date">2</div>
+                        <div class="calendar-date">3</div>
+                        <div class="calendar-date">4</div>
+                        <div class="calendar-date">5</div>
+                        <div class="calendar-date">6</div>
+                        <div class="calendar-date">7</div>
+                        <div class="calendar-date">8</div>
+                        <div class="calendar-date">9</div>
+                        <div class="calendar-date">10</div>
+                        <div class="calendar-date">11</div>
+                        <div class="calendar-date">12</div>
+                        <div class="calendar-date">13</div>
+                        <div class="calendar-date">14</div>
+                        <div class="calendar-date">15</div>
+                        <div class="calendar-date">16</div>
+                        <div class="calendar-date">17</div>
+                        <div class="calendar-date">18</div>
+                        <div class="calendar-date">19</div>
+                        <div class="calendar-date">20</div>
+                        <div class="calendar-date">21</div>
+                        <div class="calendar-date event-day">22</div>
+                        <div class="calendar-date event-day">23</div>
+                        <div class="calendar-date">24</div>
+                        <div class="calendar-date">25</div>
+                        <div class="calendar-date">26</div>
+                        <div class="calendar-date">27</div>
+                        <div class="calendar-date">28</div>
+                        <div class="calendar-date">29</div>
+                        <div class="calendar-date">30</div>
+                    </div>
+                </div>
+
+                <!-- Desember 2025 -->
+                <div class="calendar-month">
+                    <div class="month-header">
+                        <h3 class="month-title">Desember 2025</h3>
+                        <div class="year">2025</div>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="calendar-day">Min</div>
+                        <div class="calendar-day">Sen</div>
+                        <div class="calendar-day">Sel</div>
+                        <div class="calendar-day">Rab</div>
+                        <div class="calendar-day">Kam</div>
+                        <div class="calendar-day">Jum</div>
+                        <div class="calendar-day">Sab</div>
+
+                        <!-- Empty days for December 2025 (starts on Monday) -->
+                        <div class="calendar-date empty"></div>
+                        <div class="calendar-date">1</div>
+                        <div class="calendar-date">2</div>
+                        <div class="calendar-date">3</div>
+                        <div class="calendar-date">4</div>
+                        <div class="calendar-date">5</div>
+                        <div class="calendar-date">6</div>
+                        <div class="calendar-date">7</div>
+                        <div class="calendar-date">8</div>
+                        <div class="calendar-date">9</div>
+                        <div class="calendar-date">10</div>
+                        <div class="calendar-date">11</div>
+                        <div class="calendar-date">12</div>
+                        <div class="calendar-date event-day">13</div>
+                        <div class="calendar-date">14</div>
+                        <div class="calendar-date">15</div>
+                        <div class="calendar-date">16</div>
+                        <div class="calendar-date">17</div>
+                        <div class="calendar-date">18</div>
+                        <div class="calendar-date">19</div>
+                        <div class="calendar-date">20</div>
+                        <div class="calendar-date">21</div>
+                        <div class="calendar-date">22</div>
+                        <div class="calendar-date">23</div>
+                        <div class="calendar-date">24</div>
+                        <div class="calendar-date">25</div>
+                        <div class="calendar-date">26</div>
+                        <div class="calendar-date">27</div>
+                        <div class="calendar-date">28</div>
+                        <div class="calendar-date">29</div>
+                        <div class="calendar-date">30</div>
+                        <div class="calendar-date">31</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Notes -->
+            <div class="event-notes">
+                <h3>Catatan Acara</h3>
+                <ul class="note-list">
+                    <li class="note-item">
+                        <div class="note-date">22 November 2025</div>
+                        <div class="note-event">Tech Summit & Innovation Expo - Pembukaan acara teknologi terbesar ELC
+                            Group</div>
+                    </li>
+                    <li class="note-item">
+                        <div class="note-date">23 November 2025</div>
+                        <div class="note-event">Workshop Digital Marketing & Networking Session - Tingkatkan skill
+                            digital marketing Anda</div>
+                    </li>
+                    <li class="note-item">
+                        <div class="note-date">13 Desember 2025</div>
+                        <div class="note-event">ELC Annual Award & Gala Dinner - Malam penghargaan dan penutupan acara
+                            akhir tahun</div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Tentang Kami</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-history"></i> Sejarah</a></li>
+                        <li><a href="#"><i class="fas fa-bullseye"></i> Visi & Misi</a></li>
+                        <li><a href="#"><i class="fas fa-users"></i> Tim Kami</a></li>
+                        <li><a href="#"><i class="fas fa-briefcase"></i> Bimbel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Organisasi</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> ERC</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> ESC</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> WARCLUB</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> ERA</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="mailto:elccakung@gmail.com"><i class="fas fa-envelope"></i> elccakung@gmail.com</a>
+                        </li>
+                        <li><a href="https://wa.me/6281218197283"><i class="fas fa-phone"></i> +62 812-1819-7283</a>
+                        </li>
+                        <li><a href="https://maps.app.goo.gl/HTcDgXyYenpggH7g6"><i class="fas fa-map-marker-alt"></i>
+                                Jl. Komp. Ruko Ujung Menteng, Kec. Cakung, Kota Jakarta Timur</a></li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/eci.learningcare"><i class="fab fa-facebook-f"></i></a>
+                        <a href="/Notfound/notfound.html"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/elc_learning_care/"><i class="fab fa-instagram"></i></a>
+                        <a href="/Notfound/notfound.html"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Dapatkan informasi terbaru tentang kami.</p>
+                    <form style="margin-top: 15px;">
+                        <input type="email" placeholder="Email Anda"
+                            style="padding: 12px; width: 100%; margin: 10px 0; border-radius: 8px; border: 1px solid var(--light-gray); background: var(--card-bg); color: var(--text-color); font-size: 0.9rem;">
+                        <button type="submit" class="btn" style="width: 100%;">Share</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ELC Group. Semua Hak Dilindungi.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="java-callender.js"></script>
+</body>
+
+</html>
