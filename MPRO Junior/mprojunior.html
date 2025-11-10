@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>REGISTRASI MPRO SENIOR 2025</title>
+    <!-- ===================== CSS ===================== -->
+    <style>
+        /* ====== VARIABEL THEME ====== */
+        :root {
+            --body-bg: #e4e7ef;
+            --primary-blue: #185ecc;
+            --secondary-blue: #0ad1ff;
+            --card-bg: #fafbff;
+            --text-color: #262a36;
+            --gray: #a8adbe;
+            --light-gray: #e7e8ee;
+            --white: #fff;
+        }
+
+        /* ====== BODY & MAIN WRAPPER ====== */
+        body {
+            margin: 0;
+            font-family: "Segoe UI", "Inter", "Arial", sans-serif;
+            background: var(--body-bg);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+        .main-content { margin:0; padding:0; min-height: 74vh;}
+
+        /* ====== HEADER PHOTO W/ DIAGONAL GRID ====== */
+        .mpro-header {
+            width: 100%;
+            background: var(--body-bg);
+            padding: 32px 0 64px 0;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 3;
+            overflow: visible;
+        }
+        .header-inner {
+            width: 100%;
+            max-width: 920px;
+            margin: 0 20px;
+            position: relative;
+        }
+        .hero-bg {
+            position: relative;
+            width: 100%;
+            height: 260px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 32px rgba(18,30,70,0.12);
+            background:
+                linear-gradient(135deg, rgba(0,0,0,0.34),rgba(30,30,65,0.21)),
+                url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=900&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* ===== GRID DIAGONAL EFFECT (SUDUT 30%) ===== */
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 53%; height: 53%;
+            pointer-events: none;
+            z-index: 5;
+            background:
+                repeating-linear-gradient(120deg,rgba(255,255,255,0.12) 0 2px,transparent 3px 20px),
+                repeating-linear-gradient(150deg,rgba(255,255,255,0.09) 0 1px,transparent 2px 22px);
+            clip-path: polygon(100% 0, 0 0, 100% 100%);
+            box-shadow: none;
+        }
+        /* Diagonal grid tetap responsif dan menonjol */
+        @media (max-width: 720px){
+            .hero-bg { height: 180px; }
+            .mpro-header { padding:16px 0 36px;}
+            .header-inner { margin:0 8px;}
+        }
+        @media (max-width: 480px){
+            .hero-bg { height: 108px; }
+            .header-inner { margin:0 3px;}
+        }
+
+        /* ===== HEADER TEXT & COUNTDOWN ===== */
+        .hero {
+            width: 100%;
+            z-index: 7;
+            text-align: center;
+            color: #fff;
+            padding: 20px 18px;
+        }
+        .mpro-header h1 {
+            font-size: 2.2rem;
+            line-height: 1.08;
+            color: #fff;
+            text-shadow: 0 6px 20px rgba(10,40,80,0.20);
+            margin: 0 0 9px 0;
+            font-weight: 800;
+        }
+        .countdown { 
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-top: 10px;
+            color: var(--secondary-blue);
+            letter-spacing: 1px;
+            background: rgba(255,255,255,0.14);
+            border-radius: 8px;
+            padding: 5px 18px;
+            display: inline-block;
+        }
+        .countdown.pulse {
+            animation: countdownPulse 0.4s;
+        }
+        @keyframes countdownPulse {
+            0% { transform: scale(1);}
+            50% { transform: scale(1.07);}
+            100% { transform: scale(1);}
+        }
+
+        /* ====== FORM DESAIN FUTURISTIK ====== */
+        .form-wrap {
+            position: relative;
+            margin: -76px auto 62px;
+            padding:28px;
+            background: linear-gradient(175deg,rgba(255,255,255,0.98),var(--card-bg));
+            border-radius: 15px;
+            box-shadow: 0 12px 32px rgba(18,30,70,0.08);
+            max-width: 920px;
+            border:1px solid rgba(0,0,0,0.05);
+            z-index: 7;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap:18px;
+        }
+        .full { grid-column: 1 / -1; }
+
+        label {
+            font-weight:600;
+            margin-bottom:8px;
+            color:var(--text-color);
+            font-size:0.95rem;
+            display:block;
+            letter-spacing:.03em;
+        }
+        input[type="text"], input[type="tel"], select {
+            width: 100%;
+            padding: 11px 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.06);
+            background: var(--card-bg);
+            color: var(--text-color);
+            box-shadow: 0 1px 0 rgba(255,255,255,0.47) inset;
+            font-size:1rem;
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+        input::placeholder { color: var(--gray);}
+        input:focus, select:focus {
+            outline: none;
+            box-shadow: 0 6px 18px rgba(26,115,232,0.22);
+            border-color: var(--primary-blue);
+        }
+        /* Kategori - tidak diubah */
+        .kategori-field {
+            background: var(--card-bg);
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.06);
+            display: flex;
+        }
+        .kategori-value {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        /* Bukti pembayaran dropdown */
+        .custom-dropdown {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 1rem;
+            border-radius: 10px;
+            background: var(--card-bg);
+            border: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .upload-area {
+            margin-top:14px;
+            display:none;
+            transition: 0.2s;
+        }
+        .upload-box {
+            border: 2px dashed var(--primary-blue);
+            border-radius: 10px;
+            padding: 20px 12px;
+            text-align: center;
+            cursor: pointer;
+            background: rgba(26,115,232,0.035);
+            transition: background 0.2s, border-color 0.2s;
+            position: relative;
+            margin-bottom: 16px;
+        }
+        .upload-box:hover, .upload-box.active {
+            border-color: var(--secondary-blue);
+            background: rgba(26,115,232,0.09);
+        }
+        .upload-icon {
+            font-size: 2.3rem;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+        .upload-title {
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 2px;
+        }
+        .file-name {
+            color: var(--gray);
+            font-size: .96rem;
+            margin-top: 8px;
+            margin-bottom: 4px;
+        }
+        .preview-container {
+            margin-top: 10px;
+        }
+        .payment-preview {
+            display: none;
+            max-width:100%; 
+            border-radius:9px;
+            box-shadow:0 6px 20px rgba(0,0,0,.10);
+        }
+        .note {
+            font-size: 0.92rem;
+            color: var(--gray);
+            margin-top: 6px;
+            margin-bottom: 2px;
+        }
+
+        /* BUTTONS */
+        .actions {
+            display: flex;
+            gap:12px; 
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .btn {
+            padding:10px 19px;
+            border-radius:10px;
+            background: linear-gradient(115deg,var(--primary-blue),var(--secondary-blue) 70%);
+            color: #fff;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow:0 2px 12px rgba(30,115,232,0.10);
+            transition: background 0.19s;
+        }
+        .btn[type="reset"] {
+            background: var(--light-gray);
+            color: var(--text-color);
+            border: 1px solid #d6d7de;
+            box-shadow: none;
+        }
+
+        /* ====== RESPONSIVE DESIGN ====== */
+        @media (max-width:780px){
+            .form-wrap { padding:18px; margin: -58px 11px 36px;}
+            .form-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width:480px){
+            .form-wrap { padding:15px; margin:-28px 5px 20px;}
+            .form-grid { gap: 12px;}
+        }
+
+        /* ====== FOOTER ====== */
+        .footer {
+            background: var(--card-bg);
+            padding: 38px 0 18px 0;
+            border-top: 1.5px solid #e6e9f3;
+            color: var(--text-color);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+            gap:24px;
+            max-width: 960px;
+            margin: auto;
+            padding: 0 20px;
+        }
+        .footer-column h3 { margin: 0 0 10px 0; font-weight: 700;}
+        .footer-column ul { list-style:none;padding:0;margin:0;}
+        .footer-column li { margin: 6px 0;}
+        .footer-column a{ color:var(--primary-blue);text-decoration:none;transition:.13s;}
+        .footer-column a:hover { text-decoration:underline; color: var(--secondary-blue);}
+        .footer-column i {margin-right:7px;}
+        .social-links { margin-top:10px;}
+        .social-links a { color:var(--primary-blue); margin-right:8px; font-size: 1.25rem;}
+        .social-links a:hover { color:var(--secondary-blue);}
+        .footer-bottom { text-align:center; margin-top:22px; color:#8890a7; font-size:.98rem; }
+        .footer-column form input[type="email"] {
+            padding: 12px; width:100%; border-radius:8px; border:1px solid var(--light-gray); background:var(--card-bg); color: var(--text-color); font-size:.95rem; margin:5px 0;
+        }
+        .footer-column form .btn {
+            width:100%; margin-top:7px;
+            background: linear-gradient(115deg,var(--primary-blue),var(--secondary-blue) 70%);
+            color:#fff; font-size:1rem;
+        }
+
+        /* ===== DARK THEME ===== */
+        .dark-theme {
+            --body-bg: #212231;
+            --card-bg: #292b39;
+            --primary-blue: #1c8cd9;
+            --secondary-blue: #2ef6fc;
+            --text-color: #e4e7ef;
+            --gray: #adb0c0;
+            --light-gray: #394256;
+            --white: #e4e7ef;
+        }
+        .dark-theme .hero-bg { box-shadow:0 12px 38px rgba(0,0,0,0.26);}
+        .dark-theme .form-wrap { background:var(--card-bg); border-color:var(--light-gray);}
+        .dark-theme label, .dark-theme .kategori-value, .dark-theme .upload-title { color:var(--white);}
+        .dark-theme input, .dark-theme select { background:var(--body-bg) !important; color:var(--white) !important;}
+        .dark-theme .kategori-field { background:var(--body-bg); border-color:var(--light-gray);}
+        .dark-theme .custom-dropdown { background:var(--body-bg);}
+        .dark-theme .upload-box { background:rgba(20,120,240,0.10);}
+        .dark-theme .preview-container { background:var(--body-bg);}
+        .dark-theme .btn[type="reset"] { background:var(--light-gray); color:var(--white);}
+        .dark-theme .footer { background:var(--card-bg);}
+        .dark-theme .footer-column h3, .dark-theme .footer-bottom { color:var(--white);}
+        .dark-theme .footer-column a, .dark-theme .social-links a { color: var(--secondary-blue);}
+    </style>
+</head>
+<body>
+    <!-- ===================== HTML: Theme Toggle ===================== -->
+    <button class="theme-toggle" id="themeToggle" style="position: fixed; top: 18px;right: 18px; z-index:98; background: var(--card-bg); border: none; border-radius:100px; padding:8px 10px; box-shadow:0 2px 10px rgba(18,30,70,0.07); cursor:pointer;">
+        <i class="fas fa-moon"></i>
+    </button>
+    <!-- ===================== HEADER FOTO & GRID DIAGONAL ======= -->
+    <header class="mpro-header">
+        <div class="header-inner">
+            <div class="hero-bg">
+                <div class="hero">
+                    <h1>REGISTRASI MPRO SENIOR 2025</h1>
+                    <p class="countdown">Sisa waktu pendaftaran: <span id="countdown">--:--:--</span></p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ===================== CONTENT & FORM ===================== -->
+    <main class="main-content">
+        <section class="content">
+            <div class="form-wrap">
+                <!-- ====== FORM PENDAFTARAN ====== -->
+                <form id="mproForm" class="mpro-form" autocomplete="off">
+                    <div class="form-grid">
+                        <div>
+                            <label for="nama">Nama Lengkap</label>
+                            <input id="nama" name="nama" type="text" required minlength="3" placeholder="Nama lengkap">
+                        </div>
+                        <div>
+                            <label for="sekolah">Nama Sekolah</label>
+                            <input id="sekolah" name="sekolah" type="text" required placeholder="Nama sekolah">
+                        </div>
+                        <div>
+                            <label for="kategori">Kategori</label>
+                            <div class="kategori-field">
+                                <span class="kategori-value">Senior</span>
+                                <input type="hidden" name="kategori" value="Senior" readonly>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="tel">Nomor Telepon</label>
+                            <input id="tel" name="tel" type="tel" required placeholder="08xxxxxxxxxx" pattern="^08[0-9]{8,13}$">
+                        </div>
+                        <div class="full">
+                            <label for="buktipembayaran">Bukti Pembayaran</label>
+                            <select id="buktipembayaran" name="buktipembayaran" class="custom-dropdown" required>
+                                <option value="menyusul" selected>Menyusul</option>
+                                <option value="upload">Upload Foto / Sudah Bayar</option>
+                            </select>
+                            <div class="upload-area" id="uploadArea">
+                                <div class="upload-box" tabindex="0">
+                                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                    <div class="upload-title">Upload Bukti Pembayaran</div>
+                                    <div class="file-name" id="fileName">Klik untuk memilih file atau drag & drop</div>
+                                    <input type="file" id="buktiFile" name="buktiFile" style="display:none;" accept="image/*">
+                                </div>
+                                <div class="preview-container">
+                                    <img id="preview" class="payment-preview" alt="Preview Bukti">
+                                </div>
+                                <div class="note">Format: JPG, PNG (max 5MB)</div>
+                            </div>
+                        </div>
+                        <div class="full actions">
+                            <button type="submit" class="btn">Kirim Pendaftaran</button>
+                            <button type="reset" class="btn" style="background: var(--light-gray); color: var(--text-color);">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- ===== FOOTER ===== -->
+            <footer class="footer">
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3>Tentang Kami</h3>
+                        <ul>
+                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-history"></i>Sejarah</a></li>
+                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-bullseye"></i>Visi & Misi</a></li>
+                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-users"></i>Tim Kami</a></li>
+                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-briefcase"></i>Bimbel</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Organisasi</h3>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i>ERC</a></li>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i>ESC</a></li>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i>WARCLUB</a></li>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i>ERA</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Kontak</h3>
+                        <ul>
+                            <li><a href="mailto:elccakung@gmail.com"><i class="fas fa-envelope"></i>elccakung@gmail.com</a></li>
+                            <li><a href="https://wa.me/6281218197283"><i class="fas fa-phone"></i>+62 812-1819-7283</a></li>
+                            <li><a href="https://maps.app.goo.gl/HTcDgXyYenpggH7g6"><i class="fas fa-map-marker-alt"></i>Jl. Komp. Ruko Ujung Menteng, Kec. Cakung, Kota Jakarta Timur</a></li>
+                        </ul>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/eci.learningcare"><i class="fab fa-facebook-f"></i></a>
+                            <a href="/Notfound/notfound.html"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/elc_learning_care/"><i class="fab fa-instagram"></i></a>
+                            <a href="/Notfound/notfound.html"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Newsletter</h3>
+                        <p>Dapatkan informasi terbaru tentang kami.</p>
+                        <form style="margin-top:15px;">
+                            <input type="email" placeholder="Email Anda">
+                            <button type="submit" class="btn">Share</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 ELC Group. Semua Hak Dilindungi.</p>
+                </div>
+            </footer>
+        </section>
+    </main>
+    <!-- ===================== JS & ICONS ===================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+    // === Countdown menuju 20 Nov 2025 23:59, redirect jika lewat ===
+    const target = new Date(2025, 10, 20, 23, 59, 0); // Bulan: 10 = November (0-index)
+    function formatDays(days) { return days > 0 ? days + ' hari ' : ''; }
+    function updateCountdown() {
+        const now = new Date();
+        const diff = target - now;
+        const el = document.getElementById('countdown');
+        if (diff <= 0) {
+            // Jika waktu habis, redirect
+            window.location.replace('index-waktuhabis.html');
+            return;
+        }
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hrs = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
+        const secs = Math.floor((diff % (1000*60)) / 1000);
+        const text = formatDays(days) + String(hrs).padStart(2,'0')+':'+String(mins).padStart(2,'0')+':'+String(secs).padStart(2,'0');
+        el.textContent = text;
+        el.classList.remove('pulse'); void el.offsetWidth; el.classList.add('pulse');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // === Theme toggle dark/light ===
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click',()=>{
+            document.body.classList.toggle('dark-theme');
+            const icon = themeToggle.querySelector('i');
+            if(document.body.classList.contains('dark-theme')) {
+                icon.classList.remove('fa-moon'); icon.classList.add('fa-sun');
+            } else { icon.classList.add('fa-moon'); icon.classList.remove('fa-sun');}
+        });
+    }
+
+    // ===== Bukti pembayaran dropdown toggles upload area =====
+    const dropdown = document.getElementById('buktipembayaran');
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('buktiFile');
+    const preview = document.getElementById('preview');
+    const fileNameEl = document.getElementById('fileName');
+    const uploadBox = document.querySelector('.upload-box');
+    const previewContainer = document.querySelector('.preview-container');
+    dropdown.addEventListener('change', function(){
+        if(dropdown.value==='upload'){
+            uploadArea.style.display='block';
+        } else {
+            uploadArea.style.display='none';
+            fileInput.value='';
+            preview.src='';
+            preview.style.display='none';
+            fileNameEl.textContent='Klik untuk memilih file atau drag & drop';
+        }
+    });
+
+    // === Custom file input: preview & drag/drop
+    uploadBox.addEventListener('click', function(e){
+        fileInput.click();
+    });
+    uploadBox.addEventListener('keydown', function(e){
+        if(e.key==='Enter'||e.key===' '){ e.preventDefault(); fileInput.click();}
+    });
+    // Drag & drop events
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(ev=>{
+        uploadBox.addEventListener(ev,function(e){e.preventDefault();e.stopPropagation();});
+    });
+    uploadBox.addEventListener('dragover',function(){uploadBox.classList.add('active');});
+    uploadBox.addEventListener('dragleave',function(){uploadBox.classList.remove('active');});
+    uploadBox.addEventListener('drop', function(e){
+        uploadBox.classList.remove('active');
+        if(e.dataTransfer.files.length){
+            fileInput.files = e.dataTransfer.files;
+            handleFiles(e.dataTransfer.files);
+        }
+    });
+    fileInput.addEventListener('change', function(e){
+        handleFiles(e.target.files);
+    });
+    function handleFiles(files){
+        if(files.length===0){preview.style.display='none'; preview.src=''; fileNameEl.textContent='Klik untuk memilih file atau drag & drop';return;}
+        const file = files[0];
+        if(!file.type.startsWith('image/')){
+            alert('File harus berupa gambar (JPG/PNG).'); fileInput.value=''; return;
+        }
+        if(file.size>5*1024*1024){
+            alert('Ukuran file max 5MB!'); fileInput.value=''; return;
+        }
+        fileNameEl.textContent = file.name;
+        const url = URL.createObjectURL(file);
+        preview.src = url;
+        preview.style.display = 'block';
+    }
+
+    // === FORM SUBMISSION: Google Apps Script Web App ===
+    /*
+    Pastikan sudah membuat Google Apps Script dan publikasi kode.gs sebagai Web App,
+    lalu masukkan URL Web App di variabel webAppUrl di bawah ini.
+    */
+    const webAppUrl = 'https://script.google.com/macros/s/AKfycbzaehOpGRCTs6StpMgbQIysGdYbo1RNC0LrIP5xrBMXVysUckM8ciQrryqKLAsMtDL8/exec'; // GANTI DENGAN URL WEB APP GOOGLE APPS SCRIPT ANDA
+
+    document.getElementById('mproForm').addEventListener('submit', async function(e){
+        e.preventDefault();
+        // Validasi manual
+        const nama = document.getElementById('nama').value.trim();
+        const sekolah = document.getElementById('sekolah').value.trim();
+        const tel = document.getElementById('tel').value.trim();
+        const kategori = 'Senior';
+        const metode = dropdown.value;
+
+        if(!nama || !sekolah || !tel){
+            alert('Lengkapi semua field yang diperlukan.');
+            return;
+        }
+        if(metode==='upload' && fileInput.files.length===0){
+            alert('Silakan upload bukti pembayaran atau pilih "Menyusul".');
+            return;
+        }
+        try {
+            // Jika upload gambar
+            if(metode==='upload'){
+                const buktiFile = fileInput.files[0];
+                let formData = new FormData();
+                formData.append('nama',nama);
+                formData.append('sekolah',sekolah);
+                formData.append('kategori',kategori);
+                formData.append('tel',tel);
+                formData.append('buktipembayaran',metode);
+                formData.append('image', buktiFile);
+
+                // Kirim ke Web App. Web App simpan ke Sheet & Drive
+                const res = await fetch(webAppUrl,{method:'POST',body:formData});
+                const reply = await res.text();
+                if(res.ok && reply.indexOf('success')>=0){
+                    alert('Pendaftaran berhasil dikirim! Terima kasih.');
+                    e.target.reset();
+                    uploadArea.style.display='none';
+                    preview.style.display='none';
+                    preview.src='';
+                    fileNameEl.textContent='Klik untuk memilih file atau drag & drop';
+                }else{
+                    alert('Gagal kirim. Silakan cek koneksi atau hubungi admin.\n'+reply);
+                }
+            }else{
+                // Jika menyusul (tanpa gambar)
+                const payload = {
+                    nama,
+                    sekolah,
+                    kategori,
+                    tel,
+                    buktipembayaran: metode
+                };
+                const res = await fetch(webAppUrl,{
+                    method:'POST',
+                    headers:{'Content-Type':'application/json'},
+                    body: JSON.stringify(payload)
+                });
+                const reply = await res.text();
+                if(res.ok && reply.indexOf('success')>=0){
+                    alert('Pendaftaran berhasil dikirim! Terima kasih.');
+                    e.target.reset();
+                    uploadArea.style.display='none';
+                    preview.style.display='none';
+                    preview.src='';
+                    fileNameEl.textContent='Klik untuk memilih file atau drag & drop';
+                }else{
+                    alert('Gagal kirim. Silakan cek koneksi atau hubungi admin.\n'+reply);
+                }
+            }
+        }catch(err){
+            alert('Error submit: ' + err.message);
+        }
+    });
+
+    // === RESET FORM ===
+    document.getElementById('mproForm').addEventListener('reset', function(){
+        setTimeout(function(){
+            uploadArea.style.display='none';
+            preview.style.display='none';
+            preview.src='';
+            fileNameEl.textContent='Klik untuk memilih file atau drag & drop';
+        },100);
+    });
+    </script>
+</body>
+</html>

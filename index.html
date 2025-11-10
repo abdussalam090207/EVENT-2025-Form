@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELC Group - Loading</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #ffffff;
+            --secondary-blue: #ffffff;
+            --accent-green: #0f9d58;
+            --light-blue: #e8f0fe;
+            --white: #000000;
+            --dark: #202124;
+            --gray: #5f6368;
+            --light-gray: #f8f9fa;
+            --card-bg: #ffffff;
+            --body-bg: #f5f7fa;
+            --text-color: #202124;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .loading-container {
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .loading-gif {
+            max-width: 200px;
+            width: 100%;
+            margin-bottom: 30px;
+            border-radius: 15px;
+        }
+
+        .loading-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ffffff, var(--light-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .loading-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent-green), #ffffff);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(15, 157, 88, 0.5);
+        }
+
+        .loading-text {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .loading-dots {
+            display: inline-block;
+            width: 20px;
+            text-align: left;
+        }
+
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s steps(5, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        .brand {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            opacity: 0.9;
+        }
+
+        .brand span {
+            background: linear-gradient(135deg, #ffffff, var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Animasi untuk container */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .loading-container {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .loading-container {
+                padding: 30px 20px;
+            }
+            
+            .loading-title {
+                font-size: 2rem;
+            }
+            
+            .loading-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .loading-gif {
+                max-width: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .loading-container {
+                padding: 25px 15px;
+            }
+            
+            .loading-title {
+                font-size: 1.8rem;
+            }
+            
+            .loading-subtitle {
+                font-size: 1rem;
+            }
+            
+            .loading-gif {
+                max-width: 120px;
+            }
+            
+            .brand {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWd3djNmOWZsZWF3djQ0NmthenFsdGt1dzJncG5sMWEyZWQwb2ZudSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/8nH6xtdefALrKslyrj/giphy.gif" alt="Loading" class="loading-gif">
+        <h1 class="loading-title">ELC GROUP</h1>
+        <p class="loading-subtitle">Memuat Pengalaman Terbaik untuk Anda</p>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <p class="loading-text">Memuat halaman<span class="loading-dots"></span></p>
+    </div>
+
+    <script>
+        // Progress bar animation
+        const progressBar = document.getElementById('progressBar');
+        let progress = 0;
+        const interval = 30; // Update every 30ms
+        const duration = 3000; // 3 seconds
+        const increment = (interval / duration) * 100;
+        
+        const progressInterval = setInterval(() => {
+            progress += increment;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(progressInterval);
+            }
+            progressBar.style.width = `${progress}%`;
+        }, interval);
+        
+        // Redirect after 3 seconds
+        setTimeout(() => {
+            window.location.href = '/Halaman Utama/index-segment.html';
+        }, 3000);
+        
+        // Optional: Add some random loading messages
+        const messages = [
+            "Menyiapkan konten...",
+            "Memuat event terbaru...",
+            "Hampir selesai...",
+            "Hanya beberapa detik lagi..."
+        ];
+        
+        const loadingText = document.querySelector('.loading-text');
+        let messageIndex = 0;
+        
+        const messageInterval = setInterval(() => {
+            if (messageIndex < messages.length) {
+                loadingText.textContent = messages[messageIndex];
+                messageIndex++;
+            } else {
+                clearInterval(messageInterval);
+            }
+        }, 700);
+    </script>
+</body>
+</html>
