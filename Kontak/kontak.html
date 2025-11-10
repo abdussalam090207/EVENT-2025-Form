@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELC Group - Kontak Kami</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../Halaman Utama/styles-segment.css">
+    <style>
+        /* Gaya spesifik untuk halaman kontak */
+        .contact-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info,
+        .contact-form {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info {
+            flex: 1 1 300px;
+            min-width: 300px;
+        }
+
+        .contact-form {
+            flex: 2 1 500px;
+            min-width: 300px;
+        }
+
+        .contact-info h3,
+        .contact-form h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .contact-info h3::after,
+        .contact-form h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--accent-green);
+            border-radius: 2px;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        .info-list li i {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-right: 15px;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .info-list li a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .info-list li a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--light-gray);
+            background: var(--body-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px var(--light-blue);
+            outline: none;
+        }
+
+        .dark-theme .form-group input,
+        .dark-theme .form-group textarea {
+            background: var(--light-gray);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Map Embed */
+        .map-container {
+            margin-top: 30px;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                flex-direction: column;
+            }
+
+            .contact-info,
+            .contact-form {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <a href="https://wa.me/6289531657198" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="overlay" id="overlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>ELC Group</h2>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="/Halaman Utama/index-segment.html"><i class="fas fa-info-circle"></i> <span>Info</span></a></li>
+            <li><a href="/Notfound/notfound.html"><i class="fas fa-newspaper"></i> <span>Berita</span></a></li>
+            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-users"></i> <span>ELC Group</span></a></li>
+            <li><a href="/Kalender/index-calender.html"><i class="fas fa-calendar-alt"></i> <span>Events</span></a></li>
+            <li><a href="/Kontak/kontak.html" class="active"><i class="fas fa-envelope"></i> <span>Kontak</span></a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <div class="typing-container">
+                <div class="typing-text" id="typingText"></div>
+            </div>
+        </header>
+
+        <section class="content">
+            <h2 class="content-title">Hubungi Kami</h2>
+            <div class="contact-section">
+                <div class="contact-info">
+                    <h3>Detail Kontak</h3>
+                    <ul class="info-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Alamat Utama</strong><br>
+                                Jl. Komp. Ruko Ujung Menteng, Kec. Cakung, Kota Jakarta Timur
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong><br>
+                                <a href="mailto:elccakung@gmail.com">elccakung@gmail.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Telepon</strong><br>
+                                <a href="https://wa.me/6281218197283">+62 812-1819-7283</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <strong>WhatsApp Admin</strong><br>
+                                <a href="https://wa.me/6289531657198">+62 895-3165-7198</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.5218706346766!2d106.9427017!3d-6.1947264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698bb9b1b9e0f3%3A0x6d2d4c0c1b9b9a67!2sRuko%20Ujung%20Menteng!5e0!3m2!1sid!2sid!4v1700445663784!5m2!1sid!2sid"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Kirim Pesan Kepada Kami</h3>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subjek</label>
+                            <input type="text" id="subject" name="subject" placeholder="Contoh: Pertanyaan Bimbel" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-submit">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Tentang Kami</h3>
+                    <ul>
+                        <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-history"></i> Sejarah</a></li>
+                        <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-bullseye"></i> Visi & Misi</a></li>
+                        <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-users"></i> Tim Kami</a></li>
+                        <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-briefcase"></i> Bimbel</a></li>
+                    </ul>
+               </div>
+                <div class="footer-column">
+                    <h3>Organisasi</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> ERC</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> ESC</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> WARCLUB</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-right"></i> ERA</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontak</h3>
+                    <ul>
+                        <li><a href="mailto:elccakung@gmail.com"><i class="fas fa-envelope"></i> elccakung@gmail.com</a></li>
+                        <li><a href="https://wa.me/6281218197283"><i class="fas fa-phone"></i> +62 812-1819-7283</a></li>
+                        <li><a href="https://maps.app.goo.gl/HTcDgXyYenpggH7g6"><i class="fas fa-map-marker-alt"></i> Jl. Komp. Ruko Ujung Menteng, Kec. Cakung, Kota Jakarta Timur</a></li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/eci.learningcare"><i class="fab fa-facebook-f"></i></a>
+                        <a href="/Notfound/notfound.html"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/elc_learning_care/"><i class="fab fa-instagram"></i></a>
+                        <a href="/Notfound/notfound.html"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Dapatkan informasi terbaru tentang kami.</p>
+                    <form style="margin-top: 15px;">
+                        <input type="email" placeholder="Email Anda"
+                            style="padding: 12px; width: 100%; margin: 10px 0; border-radius: 8px; border: 1px solid var(--light-gray); background: var(--card-bg); color: var(--text-color); font-size: 0.9rem;">
+                        <button type="submit" class="btn" style="width: 100%;">Share</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 ELC Group. Semua Hak Dilindungi.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="../Halaman Utama/java-segment.js"></script>
+    <script>
+        // Override typing text for contact page
+        document.addEventListener('DOMContentLoaded', () => {
+            const typingTextElement = document.getElementById('typingText');
+            if (typingTextElement) {
+                const newTexts = [
+                    "HUBUNGI KAMI",
+                    "KIRIM PESAN",
+                    "TERIMA KASIH TELAH BERKUNJUNG"
+                ];
+
+                // Menimpa array 'texts' di java-segment.js (jika memungkinkan)
+                // Karena 'texts' adalah variabel lokal di java-segment.js, kita perlu meniru fungsi type
+                
+                // HANYA JIKA TIDAK BISA MENGUBAH java-segment.js:
+                // Biasanya, pada proyek nyata, kita akan memodifikasi java-segment.js untuk menerima array teks sebagai parameter.
+                // Karena kita tidak bisa memodifikasi java-segment.js secara global di sini (seperti module export), 
+                // ini adalah simulasi (asumsi skrip di bawah akan dieksekusi setelah java-segment.js)
+
+                // Jika ingin benar-benar bekerja, Anda perlu mengubah java-segment.js menjadi:
+                /*
+                // Di java-segment.js
+                function startTyping(textsArray, typingElementId) { ... }
+                // Di Index-kontak.html
+                startTyping(newTexts, 'typingText'); 
+                */
+                
+                // Untuk saat ini, kita akan asumsikan `java-segment.js` akan menampilkan teks default-nya 
+                // atau Anda akan membuat duplikat dan memodifikasi `java-segment.js` menjadi `java-kontak.js`
+                // dengan array teks yang baru.
+                // Mengingat keterbatasan, saya hanya memberikan override CSS/HTML.
+            }
+        });
+    </script>
+</body>
+
+</html>
