@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,7 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Page-specific overrides and layout */
-        .main-content { margin-left: 0; padding: 0; }
+        .main-content {
+            margin-left: 0;
+            padding: 0;
+        }
+
         /* Header now contains a centered inner container that uses the poster image
            so the image behaves like content (aligned with grid) and not full-bleed */
         .mpro-header {
@@ -26,83 +31,266 @@
             border-radius: 12px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 12px 30px rgba(18,30,70,0.12);
+            box-shadow: 0 12px 30px rgba(18, 30, 70, 0.12);
         }
 
         .mpro-header .hero-bg {
             height: 280px;
-            background-image: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../Asset/2.jpeg');
+            background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../Asset/2.jpeg');
             background-size: cover;
             background-position: center 50%;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            transform: scale(1.01); /* Prevents white edges on border-radius */
+            transform: scale(1.01);
+            /* Prevents white edges on border-radius */
         }
 
         .dark-theme .mpro-header .hero-bg {
-            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .mpro-header .hero { z-index: 4; text-align:center; padding: 24px; }
-        .mpro-header h1 { font-size:2.2rem; line-height:1.05; color: rgba(255,255,255,0.97); text-shadow: 0 6px 22px rgba(0,0,0,0.32); margin:0; }
-        .mpro-header p.countdown { margin-top:10px; font-weight:700; color: var(--primary-blue); font-size:1rem; text-shadow: none; }
+        .mpro-header .hero {
+            z-index: 4;
+            text-align: center;
+            padding: 24px;
+        }
+
+        .mpro-header h1 {
+            font-size: 2.2rem;
+            line-height: 1.05;
+            color: rgba(255, 255, 255, 0.97);
+            text-shadow: 0 6px 22px rgba(0, 0, 0, 0.32);
+            margin: 0;
+        }
+
+        .mpro-header p.countdown {
+            margin-top: 10px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 1rem;
+            text-shadow: none;
+        }
 
         /* Decorative grid corner applied to the inner hero so it aligns with content */
-        .mpro-header .hero-bg::after{
+        .mpro-header .hero-bg::after {
             content: '';
             position: absolute;
-            top: 6px; right: 6px;
-            width: 36%; height: 36%;
-            background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+            top: 6px;
+            right: 6px;
+            width: 36%;
+            height: 36%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
             background-size: 20px 20px;
             transform: rotate(6deg);
             clip-path: polygon(20% 0, 100% 0, 100% 100%, 40% 100%);
-            z-index:3;
-            pointer-events:none;
+            z-index: 3;
+            pointer-events: none;
             mix-blend-mode: overlay;
         }
 
         /* Make sure header text remains white in dark-mode too */
-        .mpro-header h1, .mpro-header p.countdown { color: rgba(255,255,255,0.95) !important; }
+        .mpro-header h1,
+        .mpro-header p.countdown {
+            color: rgba(255, 255, 255, 0.95) !important;
+        }
 
         /* Countdown large/pulse */
-        .countdown { font-size:1.05rem; }
-        .countdown.pulse { animation: countdownPulse 550ms ease; }
-        @keyframes countdownPulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+        .countdown {
+            font-size: 1.05rem;
+        }
 
-    .form-wrap { max-width: 920px; margin: -70px auto 60px; padding: 28px; border-radius: 14px; background: linear-gradient(180deg, rgba(255,255,255,0.98), var(--card-bg)); box-shadow: 0 12px 30px rgba(18, 30, 70, 0.08); position: relative; z-index: 3; border: 1px solid rgba(0,0,0,0.04); }
+        .countdown.pulse {
+            animation: countdownPulse 550ms ease;
+        }
 
-        .form-grid { display:grid; grid-template-columns: 1fr 1fr; gap:18px; }
-        label { display:block; font-weight:600; margin-bottom:8px; color:var(--text-color); font-size:0.92rem; }
-    input[type="text"], input[type="tel"], select { width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(0,0,0,0.06); background:var(--card-bg); color:var(--text-color); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6); }
-        input::placeholder { color: #bfc6cc; }
-        .full { grid-column: 1 / -1; }
+        @keyframes countdownPulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.03);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .form-wrap {
+            max-width: 920px;
+            margin: -70px auto 60px;
+            padding: 28px;
+            border-radius: 14px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), var(--card-bg));
+            box-shadow: 0 12px 30px rgba(18, 30, 70, 0.08);
+            position: relative;
+            z-index: 3;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-size: 0.92rem;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            background: var(--card-bg);
+            color: var(--text-color);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        input::placeholder {
+            color: #bfc6cc;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
 
         /* Styled toggle for payment method */
-        .toggle-group { display:flex; gap:10px; align-items:center; }
-        .toggle-btn { padding:8px 14px; border-radius:999px; background:var(--light-gray); color:var(--text-color); border:1px solid rgba(0,0,0,0.04); cursor:pointer; font-weight:600; }
-        .toggle-btn.active { background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color:var(--white); box-shadow: 0 6px 18px rgba(26,115,232,0.15); }
+        .toggle-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .toggle-btn {
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--light-gray);
+            color: var(--text-color);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .toggle-btn.active {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            box-shadow: 0 6px 18px rgba(26, 115, 232, 0.15);
+        }
 
         /* Custom file input */
-        .file-input-hidden { position: absolute; left: -9999px; }
-        .file-label { display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:10px; background:var(--card-bg); border:1px solid rgba(0,0,0,0.06); cursor:pointer; }
-        .file-name { margin-left:12px; color:var(--gray); font-size:0.9rem; }
+        .file-input-hidden {
+            position: absolute;
+            left: -9999px;
+        }
 
-        .payment-preview { margin-top:12px; max-width:260px; height:auto; border-radius:8px; border:1px solid rgba(0,0,0,0.06); display:none; box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+        .file-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+        }
 
-        .note { color:var(--gray); font-size:0.9rem; margin-top:8px; }
-        .footer { margin-top: 30px; }
+        .file-name {
+            margin-left: 12px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
 
-        .actions { display:flex; gap:12px; justify-content:flex-end; align-items:center; }
-        .btn { padding:10px 16px; border-radius:10px; }
-        .btn[ type="reset" ] { background: var(--light-gray); color:var(--text-color); }
+        .payment-preview {
+            margin-top: 12px;
+            max-width: 260px;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            display: none;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        }
 
-        @media (max-width: 780px){
-            .form-wrap { margin: -50px 16px 40px; padding:18px; }
-            .form-grid { grid-template-columns: 1fr; }
-            .payment-preview { max-width: 100%; }
+        .note {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
+        .footer {
+            margin-top: 30px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border-radius: 10px;
+        }
+
+        .btn[ type="reset"] {
+            background: var(--light-gray);
+            color: var(--text-color);
+        }
+
+        /* Status Message Styling */
+        #statusMessage {
+            display: none;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, .3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 780px) {
+            .form-wrap {
+                margin: -50px 16px 40px;
+                padding: 18px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-preview {
+                max-width: 100%;
+            }
         }
 
         /* Dark mode improvements */
@@ -151,46 +339,60 @@
             padding: 12px 14px;
             border-radius: 10px;
             background: var(--card-bg);
-            border: 1px solid rgba(0,0,0,0.06);
+            border: 1px solid rgba(0, 0, 0, 0.06);
         }
+
         .kategori-value {
             color: var(--primary-blue);
             font-weight: 600;
             font-size: 1rem;
         }
+
         .dark-theme .kategori-field {
             background: var(--input-bg);
             border-color: var(--input-border);
         }
 
         /* Inputs focus */
-        input[type="text"]:focus, input[type="tel"]:focus, .file-label:focus { outline: none; box-shadow: 0 6px 20px rgba(26,115,232,0.12); border-color: rgba(26,115,232,0.6); }
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        .file-label:focus {
+            outline: none;
+            box-shadow: 0 6px 20px rgba(26, 115, 232, 0.12);
+            border-color: rgba(26, 115, 232, 0.6);
+        }
 
-        @media (max-width: 780px){
-            .mpro-header { 
+        @media (max-width: 780px) {
+            .mpro-header {
                 padding: 20px 0 40px;
             }
+
             .mpro-header .header-inner {
                 width: calc(100% - 24px);
                 margin: 0 12px;
             }
+
             .mpro-header .hero-bg {
                 height: 240px;
             }
-            .mpro-header h1 { 
-                font-size: 1.5rem; 
+
+            .mpro-header h1 {
+                font-size: 1.5rem;
                 padding: 0 15px;
             }
-            .form-grid { 
-                grid-template-columns: 1fr; 
+
+            .form-grid {
+                grid-template-columns: 1fr;
             }
-            .form-wrap { 
-                margin: -40px 12px 30px; 
-                padding: 18px; 
+
+            .form-wrap {
+                margin: -40px 12px 30px;
+                padding: 18px;
             }
-            .hero-bg::after { 
-                width: 50%; 
-                height: 40%; 
+
+            .hero-bg::after {
+                width: 50%;
+                height: 40%;
                 transform: rotate(6deg);
             }
         }
@@ -199,9 +401,11 @@
             .mpro-header .hero-bg {
                 height: 200px;
             }
+
             .mpro-header h1 {
                 font-size: 1.35rem;
             }
+
             .form-wrap {
                 margin: -30px 12px 24px;
                 padding: 16px;
@@ -209,14 +413,78 @@
         }
 
         /* Countdown styling: blue and bold, sized to fit header */
-        p .countdown{
+        p .countdown {
             font-size: 1.1rem;
             font-weight: 900;
             color: blue;
             margin: 8px 0 0;
         }
+
+        /* Upload container styling */
+        .upload-container {
+            margin-top: 15px;
+        }
+
+        .upload-box {
+            border: 2px dashed var(--primary-blue);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(26, 115, 232, 0.03);
+            position: relative;
+        }
+
+        .upload-box:hover {
+            border-color: var(--secondary-blue);
+            background: rgba(26, 115, 232, 0.06);
+        }
+
+        .upload-icon {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .upload-text {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .upload-title {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .preview-container {
+            margin-top: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .payment-preview {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-theme .upload-box {
+            background: rgba(26, 115, 232, 0.1);
+            border-color: var(--primary-blue);
+        }
+
+        .dark-theme .upload-title {
+            color: #fff;
+        }
+
+        .dark-theme .file-name {
+            color: #888;
+        }
     </style>
 </head>
+
 <body>
 
     <!-- Theme Toggle and WhatsApp like main page (kept minimal) -->
@@ -237,6 +505,9 @@
 
         <section class="content">
             <div class="form-wrap">
+                <!-- Status Message Container -->
+                <div id="statusMessage"></div>
+
                 <form id="mproForm" class="mpro-form" novalidate>
                     <div class="form-grid">
                         <div>
@@ -275,9 +546,11 @@
                                         <i class="fas fa-cloud-upload-alt upload-icon"></i>
                                         <div class="upload-text">
                                             <span class="upload-title">Upload Bukti Pembayaran</span>
-                                            <span id="fileName" class="file-name">Klik untuk memilih file atau drag & drop</span>
+                                            <span id="fileName" class="file-name">Klik untuk memilih file atau drag &
+                                                drop</span>
                                         </div>
-                                        <input id="buktiFile" name="buktiFile" class="file-input-hidden" type="file" accept="image/*" />
+                                        <input id="buktiFile" name="buktiFile" class="file-input-hidden" type="file"
+                                            accept="image/*" />
                                     </div>
                                     <div class="preview-container">
                                         <img id="preview" class="payment-preview" alt="Preview Bukti" />
@@ -285,65 +558,12 @@
                                 </div>
                                 <p class="note">Format yang didukung: JPG, PNG (max 5MB)</p>
                             </div>
-                            
-                            <style>
-                            .upload-container {
-                                margin-top: 15px;
-                            }
-                            .upload-box {
-                                border: 2px dashed var(--primary-blue);
-                                border-radius: 10px;
-                                padding: 20px;
-                                text-align: center;
-                                cursor: pointer;
-                                transition: all 0.3s ease;
-                                background: rgba(26,115,232,0.03);
-                                position: relative;
-                            }
-                            .upload-box:hover {
-                                border-color: var(--secondary-blue);
-                                background: rgba(26,115,232,0.06);
-                            }
-                            .upload-icon {
-                                font-size: 2rem;
-                                color: var(--primary-blue);
-                                margin-bottom: 10px;
-                            }
-                            .upload-text {
-                                display: flex;
-                                flex-direction: column;
-                                gap: 5px;
-                            }
-                            .upload-title {
-                                font-weight: 600;
-                                color: var(--text-color);
-                            }
-                            .preview-container {
-                                margin-top: 15px;
-                                border-radius: 8px;
-                                overflow: hidden;
-                            }
-                            .payment-preview {
-                                max-width: 100%;
-                                border-radius: 8px;
-                                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-                            }
-                            .dark-theme .upload-box {
-                                background: rgba(26,115,232,0.1);
-                                border-color: var(--primary-blue);
-                            }
-                            .dark-theme .upload-title {
-                                color: #fff;
-                            }
-                            .dark-theme .file-name {
-                                color: #888;
-                            }
-                            </style>
                         </div>
 
                         <div class="full" style="display:flex; gap:12px; justify-content:flex-end;">
-                            <button type="submit" class="btn">Kirim Pendaftaran</button>
-                            <button type="reset" class="btn" style="background:var(--light-gray); color:var(--text-color);">Reset</button>
+                            <button type="submit" class="btn" id="submitBtn">Kirim Pendaftaran</button>
+                            <button type="reset" class="btn"
+                                style="background:var(--light-gray); color:var(--text-color);">Reset</button>
                         </div>
                     </div>
                 </form>
@@ -355,10 +575,14 @@
                     <div class="footer-column">
                         <h3>Tentang Kami</h3>
                         <ul>
-                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-history"></i> Sejarah</a></li>
-                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-bullseye"></i> Visi & Misi</a></li>
-                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-users"></i> Tim Kami</a></li>
-                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-briefcase"></i> Bimbel</a></li>
+                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i
+                                        class="fas fa-history"></i> Sejarah</a></li>
+                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i
+                                        class="fas fa-bullseye"></i> Visi & Misi</a></li>
+                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i
+                                        class="fas fa-users"></i> Tim Kami</a></li>
+                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i
+                                        class="fas fa-briefcase"></i> Bimbel</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
@@ -373,9 +597,13 @@
                     <div class="footer-column">
                         <h3>Kontak</h3>
                         <ul>
-                            <li><a href="mailto:elccakung@gmail.com"><i class="fas fa-envelope"></i> elccakung@gmail.com</a></li>
-                            <li><a href="https://wa.me/6281218197283"><i class="fas fa-phone"></i> +62 812-1819-7283</a></li>
-                            <li><a href="https://maps.app.goo.gl/HTcDgXyYenpggH7g6"><i class="fas fa-map-marker-alt"></i> Jl. Komp. Ruko Ujung Menteng, Kec. Cakung, Kota Jakarta Timur</a></li>
+                            <li><a href="mailto:elccakung@gmail.com"><i class="fas fa-envelope"></i>
+                                    elccakung@gmail.com</a></li>
+                            <li><a href="https://wa.me/6281218197283"><i class="fas fa-phone"></i> +62 812-1819-7283</a>
+                            </li>
+                            <li><a href="https://maps.app.goo.gl/HTcDgXyYenpggH7g6"><i
+                                        class="fas fa-map-marker-alt"></i> Jl. Komp. Ruko Ujung Menteng, Kec. Cakung,
+                                    Kota Jakarta Timur</a></li>
                         </ul>
                         <div class="social-links">
                             <a href="https://www.facebook.com/eci.learningcare"><i class="fab fa-facebook-f"></i></a>
@@ -402,8 +630,12 @@
     </main>
 
     <script>
+        // URL Google Apps Script Web App - GANTI DENGAN URL ANDA
+        // URL Google Apps Script Web App - GANTI DENGAN URL DEPLOY ANDA
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxIpUKWKfRHk5LnkjPfHiUNtwlDEvHj2Gr4WxNOOVA4GyOlNjolx4nW424y575LGj_P/exec";
+
         // Countdown target: 20 Nov 2025 23:59 local time
-        const target = new Date(2025, 10, 20, 23, 59, 0); // month index: 10 = November
+        const target = new Date(2025, 10, 20, 23, 59, 0);
 
         function formatDays(days) {
             if (days <= 0) return '';
@@ -415,26 +647,24 @@
             const diff = target - now;
             const el = document.getElementById('countdown');
             if (diff <= 0) {
-                // Redirect to expired page and prevent access
                 window.location.replace('../index-waktuhabis.html');
                 return;
             }
-            const days = Math.floor(diff / (1000*60*60*24));
-            const hrs = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-            const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
-            const secs = Math.floor((diff % (1000*60)) / 1000);
-            const text = formatDays(days) + String(hrs).padStart(2,'0') + ':' + String(mins).padStart(2,'0') + ':' + String(secs).padStart(2,'0');
-            // animate briefly on update to show dynamism
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+            const text = formatDays(days) + String(hrs).padStart(2, '0') + ':' + String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
             el.textContent = text;
             el.classList.remove('pulse');
-            void el.offsetWidth; // trigger reflow
+            void el.offsetWidth;
             el.classList.add('pulse');
         }
 
         updateCountdown();
         const countdownInterval = setInterval(updateCountdown, 1000);
 
-        // Payment options handling (styled toggles + custom file input)
+        // Payment options handling
         const toggleBtns = document.querySelectorAll('.toggle-btn');
         const uploadArea = document.getElementById('uploadArea');
         const fileInput = document.getElementById('buktiFile');
@@ -457,16 +687,16 @@
             btn.addEventListener('click', () => setMethod(btn.dataset.value));
         });
 
-        // Custom file label triggers file input; show filename and preview
-    const uploadBox = document.querySelector('.upload-box');
-    const previewContainer = document.querySelector('.preview-container');
+        // Custom file upload handling
+        const uploadBox = document.querySelector('.upload-box');
+        const previewContainer = document.querySelector('.preview-container');
 
         // Handle drag & drop
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             uploadBox.addEventListener(eventName, preventDefaults, false);
         });
 
-        function preventDefaults (e) {
+        function preventDefaults(e) {
             e.preventDefault();
             e.stopPropagation();
         }
@@ -491,15 +721,11 @@
 
         if (uploadBox) {
             uploadBox.addEventListener('drop', handleDrop, false);
-
-            // Make the upload box clickable (trigger hidden file input)
-            uploadBox.addEventListener('click', function() {
+            uploadBox.addEventListener('click', function () {
                 if (fileInput) fileInput.click();
             });
-
-            // Allow keyboard activation (Enter / Space)
             uploadBox.setAttribute('tabindex', '0');
-            uploadBox.addEventListener('keydown', function(e) {
+            uploadBox.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     if (fileInput) fileInput.click();
@@ -526,7 +752,7 @@
             }
         }
 
-        fileInput.addEventListener('change', function(e){
+        fileInput.addEventListener('change', function (e) {
             const file = e.target.files[0];
             if (!file) {
                 preview.style.display = 'none';
@@ -537,43 +763,116 @@
             handleFiles(this.files);
         });
 
-        // Simple form validation and handling
+        // Fungsi untuk menampilkan status
+        function showStatus(message, isError = false, isLoading = false) {
+            const statusEl = document.getElementById('statusMessage');
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (isLoading) {
+                statusEl.innerHTML = `<span class="spinner"></span> ${message}`;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Mengirim...';
+            } else {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Kirim Pendaftaran';
+            }
+
+            statusEl.textContent = isLoading ? '' : message;
+            statusEl.style.display = 'block';
+            statusEl.style.backgroundColor = isError ? '#ffebee' : (isLoading ? '#e3f2fd' : '#e8f5e8');
+            statusEl.style.color = isError ? '#c62828' : (isLoading ? '#1565c0' : '#2e7d32');
+            statusEl.style.border = isError ? '1px solid #ffcdd2' : (isLoading ? '1px solid #bbdefb' : '1px solid #c8e6c9');
+
+            if (!isLoading) {
+                // Sembunyikan status setelah 5 detik
+                setTimeout(() => {
+                    statusEl.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // Form submission dengan integrasi Google Apps Script
         const form = document.getElementById('mproForm');
-        form.addEventListener('submit', function(e){
+        form.addEventListener('submit', async function (e) {
             e.preventDefault();
-            // Basic required checks
+
+            // Tampilkan status loading
+            showStatus('Mengirim data, harap tunggu...', false, true);
+
+            // Basic validation
             const nama = document.getElementById('nama').value.trim();
             const sekolah = document.getElementById('sekolah').value.trim();
             const tel = document.getElementById('tel').value.trim();
-            // Determine selected method from toggle buttons
             const activeToggle = document.querySelector('.toggle-btn.active');
             const method = activeToggle ? activeToggle.dataset.value : 'menyusul';
+
             if (!nama || !sekolah || !tel) {
-                alert('Lengkapi semua field yang diperlukan.');
-                return;
-            }
-            if (method === 'upload' && fileInput.files.length === 0) {
-                alert('Silakan unggah bukti pembayaran atau pilih "Menyusul".');
+                showStatus('Lengkapi semua field yang diperlukan.', true);
                 return;
             }
 
-            // Placeholder: here you would send data to server via fetch/XHR
-            alert('Pendaftaran berhasil dikirim. Terima kasih!');
-            form.reset();
-            uploadArea.style.display = 'none';
-            preview.style.display = 'none';
+            if (method === 'upload' && fileInput.files.length === 0) {
+                showStatus('Silakan unggah bukti pembayaran atau pilih "Menyusul".', true);
+                return;
+            }
+
+            // Prepare form data
+            const formData = new FormData();
+            formData.append('nama', nama);
+            formData.append('sekolah', sekolah);
+            formData.append('kategori', 'Senior');
+            formData.append('tel', tel);
+            formData.append('metodePembayaran', method);
+
+            // Jika upload file, tambahkan file ke formData
+            if (method === 'upload' && fileInput.files.length > 0) {
+                formData.append('buktiFile', fileInput.files[0]);
+            }
+
+            try {
+                // Kirim data ke Google Apps Script
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showStatus('Pendaftaran berhasil dikirim! Data telah disimpan.', false);
+                    form.reset();
+                    setMethod('menyusul');
+                    preview.style.display = 'none';
+                    fileNameEl.textContent = 'Klik untuk memilih file atau drag & drop';
+                } else {
+                    throw new Error(result.message || 'Terjadi kesalahan saat mengirim data');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showStatus(`Gagal mengirim data: ${error.message}`, true);
+            }
         });
 
-        // Theme toggle (simple, similar behavior as main js but safe if elements are missing)
+        // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
         if (themeToggle) {
-            themeToggle.addEventListener('click', function(){
+            themeToggle.addEventListener('click', function () {
                 document.body.classList.toggle('dark-theme');
                 const icon = themeToggle.querySelector('i');
-                if (document.body.classList.contains('dark-theme')) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
-                else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+                if (document.body.classList.contains('dark-theme')) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
             });
         }
     </script>
 </body>
+
 </html>
