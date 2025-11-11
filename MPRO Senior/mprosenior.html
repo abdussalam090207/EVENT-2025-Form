@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,7 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Page-specific overrides and layout */
-        .main-content { margin-left: 0; padding: 0; }
+        .main-content {
+            margin-left: 0;
+            padding: 0;
+        }
+
         /* Header now contains a centered inner container that uses the poster image
            so the image behaves like content (aligned with grid) and not full-bleed */
         .mpro-header {
@@ -26,83 +31,367 @@
             border-radius: 12px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 12px 30px rgba(18,30,70,0.12);
+            box-shadow: 0 12px 30px rgba(18, 30, 70, 0.12);
         }
 
         .mpro-header .hero-bg {
             height: 280px;
-            background-image: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../Asset/2.jpeg');
+            background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../Asset/2.jpeg');
             background-size: cover;
             background-position: center 50%;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            transform: scale(1.01); /* Prevents white edges on border-radius */
+            transform: scale(1.01);
+            /* Prevents white edges on border-radius */
         }
 
         .dark-theme .mpro-header .hero-bg {
-            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .mpro-header .hero { z-index: 4; text-align:center; padding: 24px; }
-        .mpro-header h1 { font-size:2.2rem; line-height:1.05; color: rgba(255,255,255,0.97); text-shadow: 0 6px 22px rgba(0,0,0,0.32); margin:0; }
-        .mpro-header p.countdown { margin-top:10px; font-weight:700; color: var(--primary-blue); font-size:1rem; text-shadow: none; }
+        .mpro-header .hero {
+            z-index: 4;
+            text-align: center;
+            padding: 24px;
+        }
+
+        .mpro-header h1 {
+            font-size: 2.2rem;
+            line-height: 1.05;
+            color: rgba(255, 255, 255, 0.97);
+            text-shadow: 0 6px 22px rgba(0, 0, 0, 0.32);
+            margin: 0;
+        }
+
+        .mpro-header p.countdown {
+            margin-top: 10px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 1rem;
+            text-shadow: none;
+        }
 
         /* Decorative grid corner applied to the inner hero so it aligns with content */
-        .mpro-header .hero-bg::after{
+        .mpro-header .hero-bg::after {
             content: '';
             position: absolute;
-            top: 6px; right: 6px;
-            width: 36%; height: 36%;
-            background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+            top: 6px;
+            right: 6px;
+            width: 36%;
+            height: 36%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
             background-size: 20px 20px;
             transform: rotate(6deg);
             clip-path: polygon(20% 0, 100% 0, 100% 100%, 40% 100%);
-            z-index:3;
-            pointer-events:none;
+            z-index: 3;
+            pointer-events: none;
             mix-blend-mode: overlay;
         }
 
         /* Make sure header text remains white in dark-mode too */
-        .mpro-header h1, .mpro-header p.countdown { color: rgba(255,255,255,0.95) !important; }
+        .mpro-header h1,
+        .mpro-header p.countdown {
+            color: rgba(255, 255, 255, 0.95) !important;
+        }
 
         /* Countdown large/pulse */
-        .countdown { font-size:1.05rem; }
-        .countdown.pulse { animation: countdownPulse 550ms ease; }
-        @keyframes countdownPulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+        .countdown {
+            font-size: 1.05rem;
+        }
 
-    .form-wrap { max-width: 920px; margin: -70px auto 60px; padding: 28px; border-radius: 14px; background: linear-gradient(180deg, rgba(255,255,255,0.98), var(--card-bg)); box-shadow: 0 12px 30px rgba(18, 30, 70, 0.08); position: relative; z-index: 3; border: 1px solid rgba(0,0,0,0.04); }
+        .countdown.pulse {
+            animation: countdownPulse 550ms ease;
+        }
 
-        .form-grid { display:grid; grid-template-columns: 1fr 1fr; gap:18px; }
-        label { display:block; font-weight:600; margin-bottom:8px; color:var(--text-color); font-size:0.92rem; }
-    input[type="text"], input[type="tel"], select { width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(0,0,0,0.06); background:var(--card-bg); color:var(--text-color); box-shadow: inset 0 1px 0 rgba(255,255,255,0.6); }
-        input::placeholder { color: #bfc6cc; }
-        .full { grid-column: 1 / -1; }
+        @keyframes countdownPulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.03);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .form-wrap {
+            max-width: 920px;
+            margin: -70px auto 60px;
+            padding: 28px;
+            border-radius: 14px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), var(--card-bg));
+            box-shadow: 0 12px 30px rgba(18, 30, 70, 0.08);
+            position: relative;
+            z-index: 3;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-size: 0.92rem;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            background: var(--card-bg);
+            color: var(--text-color);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        input::placeholder {
+            color: #bfc6cc;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
 
         /* Styled toggle for payment method */
-        .toggle-group { display:flex; gap:10px; align-items:center; }
-        .toggle-btn { padding:8px 14px; border-radius:999px; background:var(--light-gray); color:var(--text-color); border:1px solid rgba(0,0,0,0.04); cursor:pointer; font-weight:600; }
-        .toggle-btn.active { background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color:var(--white); box-shadow: 0 6px 18px rgba(26,115,232,0.15); }
+        .toggle-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .toggle-btn {
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--light-gray);
+            color: var(--text-color);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .toggle-btn.active {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            box-shadow: 0 6px 18px rgba(26, 115, 232, 0.15);
+        }
 
         /* Custom file input */
-        .file-input-hidden { position: absolute; left: -9999px; }
-        .file-label { display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:10px; background:var(--card-bg); border:1px solid rgba(0,0,0,0.06); cursor:pointer; }
-        .file-name { margin-left:12px; color:var(--gray); font-size:0.9rem; }
+        .file-input-hidden {
+            position: absolute;
+            left: -9999px;
+        }
 
-        .payment-preview { margin-top:12px; max-width:260px; height:auto; border-radius:8px; border:1px solid rgba(0,0,0,0.06); display:none; box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+        .file-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+        }
 
-        .note { color:var(--gray); font-size:0.9rem; margin-top:8px; }
-        .footer { margin-top: 30px; }
+        .file-name {
+            margin-left: 12px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
 
-        .actions { display:flex; gap:12px; justify-content:flex-end; align-items:center; }
-        .btn { padding:10px 16px; border-radius:10px; }
-        .btn[ type="reset" ] { background: var(--light-gray); color:var(--text-color); }
+        .payment-preview {
+            margin-top: 12px;
+            max-width: 260px;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            display: none;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        }
 
-        @media (max-width: 780px){
-            .form-wrap { margin: -50px 16px 40px; padding:18px; }
-            .form-grid { grid-template-columns: 1fr; }
-            .payment-preview { max-width: 100%; }
+        .note {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
+        .footer {
+            margin-top: 30px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border-radius: 10px;
+        }
+
+        .btn[ type="reset"] {
+            background: var(--light-gray);
+            color: var(--text-color);
+        }
+
+        /* NOTIFICATION STYLES */
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 400px;
+            width: calc(100% - 40px);
+        }
+
+        .notification {
+            padding: 16px 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: slideInRight 0.3s ease-out;
+            transform: translateX(0);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .notification.hiding {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        .notification.success {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+        }
+
+        .notification.error {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+            color: white;
+        }
+
+        .notification.warning {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+        }
+
+        .notification.info {
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            color: white;
+        }
+
+        .notification-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+            font-size: 1rem;
+        }
+
+        .notification-message {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .notification-close {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            font-size: 1rem;
+            opacity: 0.8;
+            padding: 4px;
+            border-radius: 50%;
+            transition: opacity 0.2s;
+            flex-shrink: 0;
+        }
+
+        .notification-close:hover {
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .notification-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.4);
+            width: 100%;
+            transform-origin: left;
+            animation: progressBar 5s linear forwards;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes progressBar {
+            from {
+                transform: scaleX(1);
+            }
+
+            to {
+                transform: scaleX(0);
+            }
+        }
+
+        @media (max-width: 780px) {
+            .form-wrap {
+                margin: -50px 16px 40px;
+                padding: 18px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-preview {
+                max-width: 100%;
+            }
+
+            .notification-container {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                width: auto;
+                max-width: none;
+            }
         }
 
         /* Dark mode improvements */
@@ -151,46 +440,60 @@
             padding: 12px 14px;
             border-radius: 10px;
             background: var(--card-bg);
-            border: 1px solid rgba(0,0,0,0.06);
+            border: 1px solid rgba(0, 0, 0, 0.06);
         }
+
         .kategori-value {
             color: var(--primary-blue);
             font-weight: 600;
             font-size: 1rem;
         }
+
         .dark-theme .kategori-field {
             background: var(--input-bg);
             border-color: var(--input-border);
         }
 
         /* Inputs focus */
-        input[type="text"]:focus, input[type="tel"]:focus, .file-label:focus { outline: none; box-shadow: 0 6px 20px rgba(26,115,232,0.12); border-color: rgba(26,115,232,0.6); }
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        .file-label:focus {
+            outline: none;
+            box-shadow: 0 6px 20px rgba(26, 115, 232, 0.12);
+            border-color: rgba(26, 115, 232, 0.6);
+        }
 
-        @media (max-width: 780px){
-            .mpro-header { 
+        @media (max-width: 780px) {
+            .mpro-header {
                 padding: 20px 0 40px;
             }
+
             .mpro-header .header-inner {
                 width: calc(100% - 24px);
                 margin: 0 12px;
             }
+
             .mpro-header .hero-bg {
                 height: 240px;
             }
-            .mpro-header h1 { 
-                font-size: 1.5rem; 
+
+            .mpro-header h1 {
+                font-size: 1.5rem;
                 padding: 0 15px;
             }
-            .form-grid { 
-                grid-template-columns: 1fr; 
+
+            .form-grid {
+                grid-template-columns: 1fr;
             }
-            .form-wrap { 
-                margin: -40px 12px 30px; 
-                padding: 18px; 
+
+            .form-wrap {
+                margin: -40px 12px 30px;
+                padding: 18px;
             }
-            .hero-bg::after { 
-                width: 50%; 
-                height: 40%; 
+
+            .hero-bg::after {
+                width: 50%;
+                height: 40%;
                 transform: rotate(6deg);
             }
         }
@@ -199,9 +502,11 @@
             .mpro-header .hero-bg {
                 height: 200px;
             }
+
             .mpro-header h1 {
                 font-size: 1.35rem;
             }
+
             .form-wrap {
                 margin: -30px 12px 24px;
                 padding: 16px;
@@ -209,7 +514,7 @@
         }
 
         /* Countdown styling: blue and bold, sized to fit header */
-        p .countdown{
+        p .countdown {
             font-size: 1.1rem;
             font-weight: 900;
             color: blue;
@@ -217,11 +522,15 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Theme Toggle and WhatsApp like main page (kept minimal) -->
     <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
     <a href="https://wa.me/6289531657198" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
 
     <main class="main-content">
         <header class="mpro-header">
@@ -275,9 +584,11 @@
                                         <i class="fas fa-cloud-upload-alt upload-icon"></i>
                                         <div class="upload-text">
                                             <span class="upload-title">Upload Bukti Pembayaran</span>
-                                            <span id="fileName" class="file-name">Klik untuk memilih file atau drag & drop</span>
+                                            <span id="fileName" class="file-name">Klik untuk memilih file atau drag &
+                                                drop</span>
                                         </div>
-                                        <input id="buktiFile" name="buktiFile" class="file-input-hidden" type="file" accept="image/*" />
+                                        <input id="buktiFile" name="buktiFile" class="file-input-hidden" type="file"
+                                            accept="image/*" />
                                     </div>
                                     <div class="preview-container">
                                         <img id="preview" class="payment-preview" alt="Preview Bukti" />
@@ -285,65 +596,76 @@
                                 </div>
                                 <p class="note">Format yang didukung: JPG, PNG (max 5MB)</p>
                             </div>
-                            
+
                             <style>
-                            .upload-container {
-                                margin-top: 15px;
-                            }
-                            .upload-box {
-                                border: 2px dashed var(--primary-blue);
-                                border-radius: 10px;
-                                padding: 20px;
-                                text-align: center;
-                                cursor: pointer;
-                                transition: all 0.3s ease;
-                                background: rgba(26,115,232,0.03);
-                                position: relative;
-                            }
-                            .upload-box:hover {
-                                border-color: var(--secondary-blue);
-                                background: rgba(26,115,232,0.06);
-                            }
-                            .upload-icon {
-                                font-size: 2rem;
-                                color: var(--primary-blue);
-                                margin-bottom: 10px;
-                            }
-                            .upload-text {
-                                display: flex;
-                                flex-direction: column;
-                                gap: 5px;
-                            }
-                            .upload-title {
-                                font-weight: 600;
-                                color: var(--text-color);
-                            }
-                            .preview-container {
-                                margin-top: 15px;
-                                border-radius: 8px;
-                                overflow: hidden;
-                            }
-                            .payment-preview {
-                                max-width: 100%;
-                                border-radius: 8px;
-                                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-                            }
-                            .dark-theme .upload-box {
-                                background: rgba(26,115,232,0.1);
-                                border-color: var(--primary-blue);
-                            }
-                            .dark-theme .upload-title {
-                                color: #fff;
-                            }
-                            .dark-theme .file-name {
-                                color: #888;
-                            }
+                                .upload-container {
+                                    margin-top: 15px;
+                                }
+
+                                .upload-box {
+                                    border: 2px dashed var(--primary-blue);
+                                    border-radius: 10px;
+                                    padding: 20px;
+                                    text-align: center;
+                                    cursor: pointer;
+                                    transition: all 0.3s ease;
+                                    background: rgba(26, 115, 232, 0.03);
+                                    position: relative;
+                                }
+
+                                .upload-box:hover {
+                                    border-color: var(--secondary-blue);
+                                    background: rgba(26, 115, 232, 0.06);
+                                }
+
+                                .upload-icon {
+                                    font-size: 2rem;
+                                    color: var(--primary-blue);
+                                    margin-bottom: 10px;
+                                }
+
+                                .upload-text {
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 5px;
+                                }
+
+                                .upload-title {
+                                    font-weight: 600;
+                                    color: var(--text-color);
+                                }
+
+                                .preview-container {
+                                    margin-top: 15px;
+                                    border-radius: 8px;
+                                    overflow: hidden;
+                                }
+
+                                .payment-preview {
+                                    max-width: 100%;
+                                    border-radius: 8px;
+                                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                                }
+
+                                .dark-theme .upload-box {
+                                    background: rgba(26, 115, 232, 0.1);
+                                    border-color: var(--primary-blue);
+                                }
+
+                                .dark-theme .upload-title {
+                                    color: #fff;
+                                }
+
+                                .dark-theme .file-name {
+                                    color: #888;
+                                }
                             </style>
                         </div>
 
                         <div class="full" style="display:flex; gap:12px; justify-content:flex-end;">
                             <button type="submit" class="btn">Kirim Pendaftaran</button>
-                            <button type="reset" class="btn" style="background:var(--light-gray); color:var(--text-color);">Reset</button>
+                            <button type="reset" class="btn"
+                                style="background:var(--light-gray); color:var(--text-color);">Reset</button>
                         </div>
                     </div>
                 </form>
@@ -355,10 +677,14 @@
                     <div class="footer-column">
                         <h3>Tentang Kami</h3>
                         <ul>
-                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-history"></i> Sejarah</a></li>
-                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-bullseye"></i> Visi & Misi</a></li>
-                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-users"></i> Tim Kami</a></li>
-                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i class="fas fa-briefcase"></i> Bimbel</a></li>
+                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i
+                                        class="fas fa-history"></i> Sejarah</a></li>
+                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i
+                                        class="fas fa-bullseye"></i> Visi & Misi</a></li>
+                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i
+                                        class="fas fa-users"></i> Tim Kami</a></li>
+                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i
+                                        class="fas fa-briefcase"></i> Bimbel</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
@@ -373,9 +699,13 @@
                     <div class="footer-column">
                         <h3>Kontak</h3>
                         <ul>
-                            <li><a href="mailto:elccakung@gmail.com"><i class="fas fa-envelope"></i> elccakung@gmail.com</a></li>
-                            <li><a href="https://wa.me/6281218197283"><i class="fas fa-phone"></i> +62 812-1819-7283</a></li>
-                            <li><a href="https://maps.app.goo.gl/HTcDgXyYenpggH7g6"><i class="fas fa-map-marker-alt"></i> Jl. Komp. Ruko Ujung Menteng, Kec. Cakung, Kota Jakarta Timur</a></li>
+                            <li><a href="mailto:elccakung@gmail.com"><i class="fas fa-envelope"></i>
+                                    elccakung@gmail.com</a></li>
+                            <li><a href="https://wa.me/6281218197283"><i class="fas fa-phone"></i> +62 812-1819-7283</a>
+                            </li>
+                            <li><a href="https://maps.app.goo.gl/HTcDgXyYenpggH7g6"><i
+                                        class="fas fa-map-marker-alt"></i> Jl. Komp. Ruko Ujung Menteng, Kec. Cakung,
+                                    Kota Jakarta Timur</a></li>
                         </ul>
                         <div class="social-links">
                             <a href="https://www.facebook.com/eci.learningcare"><i class="fab fa-facebook-f"></i></a>
@@ -402,8 +732,65 @@
     </main>
 
     <script>
+        // Notification System
+        function showNotification(type, title, message, duration = 5000) {
+            const container = document.getElementById('notificationContainer');
+            const notificationId = 'notification-' + Date.now();
+
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.id = notificationId;
+
+            let icon;
+            switch (type) {
+                case 'success':
+                    icon = '<i class="fas fa-check-circle notification-icon"></i>';
+                    break;
+                case 'error':
+                    icon = '<i class="fas fa-exclamation-circle notification-icon"></i>';
+                    break;
+                case 'warning':
+                    icon = '<i class="fas fa-exclamation-triangle notification-icon"></i>';
+                    break;
+                case 'info':
+                    icon = '<i class="fas fa-info-circle notification-icon"></i>';
+                    break;
+            }
+
+            notification.innerHTML = `
+                ${icon}
+                <div class="notification-content">
+                    <div class="notification-title">${title}</div>
+                    <div class="notification-message">${message}</div>
+                </div>
+                <button class="notification-close" onclick="closeNotification('${notificationId}')">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="notification-progress"></div>
+            `;
+
+            container.appendChild(notification);
+
+            // Auto remove after duration
+            setTimeout(() => {
+                closeNotification(notificationId);
+            }, duration);
+        }
+
+        function closeNotification(id) {
+            const notification = document.getElementById(id);
+            if (notification) {
+                notification.classList.add('hiding');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }
+        }
+
         // Countdown target: 20 Nov 2025 23:59 local time
-        const target = new Date(2025, 10, 20, 23, 59, 0); // month index: 10 = November
+        const target = new Date(2025, 10, 20, 23, 59, 0);
 
         function formatDays(days) {
             if (days <= 0) return '';
@@ -415,26 +802,24 @@
             const diff = target - now;
             const el = document.getElementById('countdown');
             if (diff <= 0) {
-                // Redirect to expired page and prevent access
                 window.location.replace('../index-waktuhabis.html');
                 return;
             }
-            const days = Math.floor(diff / (1000*60*60*24));
-            const hrs = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-            const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
-            const secs = Math.floor((diff % (1000*60)) / 1000);
-            const text = formatDays(days) + String(hrs).padStart(2,'0') + ':' + String(mins).padStart(2,'0') + ':' + String(secs).padStart(2,'0');
-            // animate briefly on update to show dynamism
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+            const text = formatDays(days) + String(hrs).padStart(2, '0') + ':' + String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0');
             el.textContent = text;
             el.classList.remove('pulse');
-            void el.offsetWidth; // trigger reflow
+            void el.offsetWidth;
             el.classList.add('pulse');
         }
 
         updateCountdown();
         const countdownInterval = setInterval(updateCountdown, 1000);
 
-        // Payment options handling (styled toggles + custom file input)
+        // Payment options handling
         const toggleBtns = document.querySelectorAll('.toggle-btn');
         const uploadArea = document.getElementById('uploadArea');
         const fileInput = document.getElementById('buktiFile');
@@ -457,16 +842,16 @@
             btn.addEventListener('click', () => setMethod(btn.dataset.value));
         });
 
-        // Custom file label triggers file input; show filename and preview
-    const uploadBox = document.querySelector('.upload-box');
-    const previewContainer = document.querySelector('.preview-container');
+        // File upload handling
+        const uploadBox = document.querySelector('.upload-box');
+        const previewContainer = document.querySelector('.preview-container');
 
-        // Handle drag & drop
+        // Drag & drop functions
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             uploadBox.addEventListener(eventName, preventDefaults, false);
         });
 
-        function preventDefaults (e) {
+        function preventDefaults(e) {
             e.preventDefault();
             e.stopPropagation();
         }
@@ -491,15 +876,11 @@
 
         if (uploadBox) {
             uploadBox.addEventListener('drop', handleDrop, false);
-
-            // Make the upload box clickable (trigger hidden file input)
-            uploadBox.addEventListener('click', function() {
+            uploadBox.addEventListener('click', function () {
                 if (fileInput) fileInput.click();
             });
-
-            // Allow keyboard activation (Enter / Space)
             uploadBox.setAttribute('tabindex', '0');
-            uploadBox.addEventListener('keydown', function(e) {
+            uploadBox.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     if (fileInput) fileInput.click();
@@ -526,7 +907,7 @@
             }
         }
 
-        fileInput.addEventListener('change', function(e){
+        fileInput.addEventListener('change', function (e) {
             const file = e.target.files[0];
             if (!file) {
                 preview.style.display = 'none';
@@ -537,43 +918,119 @@
             handleFiles(this.files);
         });
 
-        // Simple form validation and handling
+        // Google Apps Script URL - GANTI DENGAN URL ANDA
+        // Google Apps Script URL - PASTIKAN INI URL DEPLOYMENT TERBARU
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwElfPVEgnyp1bA59M-3hFg3t5G_zr1vqy9CYEmODwO6CGRxVi7t2VpWAYh_va8uXDkgQ/exec';
+
+        // Form submission - DENGAN KONVERSI BASE64 UNTUK FILE
         const form = document.getElementById('mproForm');
-        form.addEventListener('submit', function(e){
+        form.addEventListener('submit', async function (e) {
             e.preventDefault();
-            // Basic required checks
+
+            // Basic validation
             const nama = document.getElementById('nama').value.trim();
             const sekolah = document.getElementById('sekolah').value.trim();
             const tel = document.getElementById('tel').value.trim();
-            // Determine selected method from toggle buttons
             const activeToggle = document.querySelector('.toggle-btn.active');
             const method = activeToggle ? activeToggle.dataset.value : 'menyusul';
+
             if (!nama || !sekolah || !tel) {
-                alert('Lengkapi semua field yang diperlukan.');
-                return;
-            }
-            if (method === 'upload' && fileInput.files.length === 0) {
-                alert('Silakan unggah bukti pembayaran atau pilih "Menyusul".');
+                showNotification('warning', 'Data Tidak Lengkap', 'Lengkapi semua field yang diperlukan.', 4000);
                 return;
             }
 
-            // Placeholder: here you would send data to server via fetch/XHR
-            alert('Pendaftaran berhasil dikirim. Terima kasih!');
-            form.reset();
-            uploadArea.style.display = 'none';
-            preview.style.display = 'none';
+            if (method === 'upload' && fileInput.files.length === 0) {
+                showNotification('warning', 'Bukti Pembayaran', 'Silakan unggah bukti pembayaran atau pilih "Menyusul".', 4000);
+                return;
+            }
+
+            // Show loading
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Mengirim...';
+            submitBtn.disabled = true;
+
+            try {
+                // Create FormData
+                const formData = new FormData();
+                formData.append('nama', nama);
+                formData.append('sekolah', sekolah);
+                formData.append('tel', tel);
+                formData.append('kategori', 'Senior');
+                formData.append('metodePembayaran', method);
+                formData.append('timestamp', new Date().toISOString());
+
+                // Convert file to base64 if upload method
+                if (method === 'upload' && fileInput.files.length > 0) {
+                    submitBtn.textContent = 'Mengupload foto...';
+                    const file = fileInput.files[0];
+                    const base64 = await convertFileToBase64(file);
+                    formData.append('buktiBase64', base64);
+                    formData.append('fileName', file.name);
+                    formData.append('fileType', file.type);
+                }
+
+                // Send data
+                submitBtn.textContent = 'Menyimpan data...';
+                const response = await fetch(scriptURL, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const result = await response.json();
+                console.log('Success:', result);
+
+                if (result.status === 'success') {
+                    showNotification('success', 'Pendaftaran Berhasil', 'Data telah disimpan. Terima kasih!', 5000);
+                    form.reset();
+                    uploadArea.style.display = 'none';
+                    preview.style.display = 'none';
+                    previewContainer.style.display = 'none';
+                    fileNameEl.textContent = 'Klik untuk memilih file atau drag & drop';
+                    setMethod('menyusul');
+                } else {
+                    throw new Error(result.message || 'Unknown error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showNotification('error', 'Gagal Mengirim', 'Terjadi kesalahan: ' + error.message, 5000);
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
         });
 
-        // Theme toggle (simple, similar behavior as main js but safe if elements are missing)
+        // Function to convert file to base64
+        function convertFileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
         if (themeToggle) {
-            themeToggle.addEventListener('click', function(){
+            themeToggle.addEventListener('click', function () {
                 document.body.classList.toggle('dark-theme');
                 const icon = themeToggle.querySelector('i');
-                if (document.body.classList.contains('dark-theme')) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
-                else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+                if (document.body.classList.contains('dark-theme')) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
             });
         }
     </script>
+
 </body>
+
 </html>
