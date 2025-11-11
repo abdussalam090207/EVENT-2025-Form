@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>REGISTRASI MPRO Junior 2025</title>
+    <title>REGISTRASI MPRO JUNIOR 2025</title>
     <link rel="stylesheet" href="../Halaman Utama/styles-segment.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -163,6 +163,75 @@
 
         .full {
             grid-column: 1 / -1;
+        }
+
+        /* Payment info note styling */
+        .payment-info {
+            background: rgba(26, 115, 232, 0.05);
+            border: 1px solid rgba(26, 115, 232, 0.2);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .payment-info-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(26, 115, 232, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .payment-info-icon i {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+        }
+
+        .payment-info-content {
+            flex: 1;
+        }
+
+        .payment-info-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        .payment-info-detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .payment-info-bank {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .payment-info-number {
+            font-family: monospace;
+            letter-spacing: 1px;
+            background: rgba(0, 0, 0, 0.03);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .dark-theme .payment-info {
+            background: rgba(26, 115, 232, 0.1);
+            border-color: rgba(26, 115, 232, 0.3);
+        }
+
+        .dark-theme .payment-info-number {
+            background: rgba(255, 255, 255, 0.05);
         }
 
         /* Styled toggle for payment method */
@@ -371,6 +440,116 @@
             }
         }
 
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            max-width: 450px;
+            width: 90%;
+            padding: 30px;
+            text-align: center;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .modal-loading .modal-icon {
+            color: var(--primary-blue);
+        }
+
+        .modal-success .modal-icon {
+            color: #4CAF50;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .modal-message {
+            color: var(--gray);
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .modal-btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+        }
+
+        .modal-btn-secondary {
+            background: var(--light-gray);
+            color: var(--text-color);
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            border: 5px solid rgba(26, 115, 232, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary-blue);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         @media (max-width: 780px) {
             .form-wrap {
                 margin: -50px 16px 40px;
@@ -391,6 +570,18 @@
                 left: 10px;
                 width: auto;
                 max-width: none;
+            }
+
+            .modal {
+                padding: 20px;
+            }
+
+            .modal-title {
+                font-size: 1.3rem;
+            }
+
+            .modal-buttons {
+                flex-direction: column;
             }
         }
 
@@ -511,6 +702,16 @@
                 margin: -30px 12px 24px;
                 padding: 16px;
             }
+            
+            .payment-info {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .payment-info-detail {
+                justify-content: center;
+            }
         }
 
         /* Countdown styling: blue and bold, sized to fit header */
@@ -532,12 +733,38 @@
     <!-- Notification Container -->
     <div class="notification-container" id="notificationContainer"></div>
 
+    <!-- Loading Modal -->
+    <div class="modal-overlay" id="loadingModal">
+        <div class="modal modal-loading">
+            <div class="spinner"></div>
+            <h3 class="modal-title">Mengirim Data</h3>
+            <p class="modal-message">Harap tunggu, data pendaftaran sedang dikirim...</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal modal-success">
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="modal-title">Pendaftaran Berhasil!</h3>
+            <p class="modal-message">Terima kasih telah mendaftar MPRO Junior 2025. Bergabunglah dengan grup WhatsApp kami untuk informasi lebih lanjut.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-secondary" id="closeSuccessModal">Tutup</button>
+                <a href="https://chat.whatsapp.com/H8NAMFvncTuLcB0D2UMJtW" target="_blank" class="modal-btn modal-btn-primary">
+                    <i class="fab fa-whatsapp"></i> Gabung Grup
+                </a>
+            </div>
+        </div>
+    </div>
+
     <main class="main-content">
         <header class="mpro-header">
             <div class="header-inner">
                 <div class="hero-bg">
                     <div class="hero">
-                        <h1>REGISTRASI MPRO Junior 2025</h1>
+                        <h1>REGISTRASI MPRO JUNIOR 2025</h1>
                         <p class="countdown">Sisa waktu pendaftaran: <span id="countdown">--:--:--</span></p>
                     </div>
                 </div>
@@ -573,6 +800,21 @@
 
                         <div class="full">
                             <label>Bukti Pembayaran</label>
+                            
+                            <!-- Payment Information Note -->
+                            <div class="payment-info">
+                                <div class="payment-info-icon">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <div class="payment-info-content">
+                                    <div class="payment-info-title">Transfer ke rekening berikut:</div>
+                                    <div class="payment-info-detail">
+                                        <span class="payment-info-bank">BCA a.n. Eka Novendra</span>
+                                        <span class="payment-info-number">8780150832</span>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="toggle-group" role="radiogroup" aria-label="Metode Bukti Pembayaran">
                                 <button type="button" class="toggle-btn active" data-value="menyusul">Menyusul</button>
                                 <button type="button" class="toggle-btn" data-value="upload">Upload Gambar</button>
@@ -584,8 +826,7 @@
                                         <i class="fas fa-cloud-upload-alt upload-icon"></i>
                                         <div class="upload-text">
                                             <span class="upload-title">Upload Bukti Pembayaran</span>
-                                            <span id="fileName" class="file-name">Klik untuk memilih file atau drag &
-                                                drop</span>
+                                            <span id="fileName" class="file-name">Klik untuk memilih file atau drag & drop</span>
                                         </div>
                                         <input id="buktiFile" name="buktiFile" class="file-input-hidden" type="file"
                                             accept="image/*" />
@@ -789,6 +1030,23 @@
             }
         }
 
+        // Modal Functions
+        function showLoadingModal() {
+            document.getElementById('loadingModal').classList.add('active');
+        }
+
+        function hideLoadingModal() {
+            document.getElementById('loadingModal').classList.remove('active');
+        }
+
+        function showSuccessModal() {
+            document.getElementById('successModal').classList.add('active');
+        }
+
+        function hideSuccessModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+
         // Countdown target: 20 Nov 2025 23:59 local time
         const target = new Date(2025, 10, 20, 23, 59, 0);
 
@@ -944,6 +1202,9 @@
                 return;
             }
 
+            // Show loading modal
+            showLoadingModal();
+
             // Show loading
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
@@ -985,7 +1246,11 @@
                 console.log('Success:', result);
 
                 if (result.status === 'success') {
-                    showNotification('success', 'Pendaftaran Berhasil', 'Data telah disimpan. Terima kasih!', 5000);
+                    // Hide loading modal and show success modal
+                    hideLoadingModal();
+                    showSuccessModal();
+                    
+                    // Reset form
                     form.reset();
                     uploadArea.style.display = 'none';
                     preview.style.display = 'none';
@@ -997,6 +1262,7 @@
                 }
             } catch (error) {
                 console.error('Error:', error);
+                hideLoadingModal();
                 showNotification('error', 'Gagal Mengirim', 'Terjadi kesalahan: ' + error.message, 5000);
             } finally {
                 submitBtn.textContent = originalText;
@@ -1029,6 +1295,11 @@
                 }
             });
         }
+
+        // Close success modal when close button is clicked
+        document.getElementById('closeSuccessModal').addEventListener('click', function() {
+            hideSuccessModal();
+        });
     </script>
 
 </body>
