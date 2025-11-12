@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pendaftaran Calon Finalis SOY 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/footer.css">
+    <link rel="stylesheet" href="finalissoy.css"/>
+</head>
+
+<body>
+    <!-- Theme Toggle and WhatsApp -->
+    <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+    <a href="https://wa.me/6289531657198" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Loading Modal -->
+    <div class="modal-overlay" id="loadingModal">
+        <div class="modal modal-loading">
+            <div class="spinner"></div>
+            <h3 class="modal-title">Mengirim Data</h3>
+            <p class="modal-message">Harap tunggu, data pendaftaran sedang dikirim...</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal modal-success">
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="modal-title">Pendaftaran Berhasil!</h3>
+            <p class="modal-message">Terima kasih telah mendaftar sebagai calon Finalis SOY 2026. Kami akan menghubungi Anda untuk informasi lebih lanjut.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-secondary" id="closeSuccessModal">Tutup</button>
+                <a href="#" target="_blank" class="modal-btn modal-btn-primary">
+                    <i class="fas fa-info-circle"></i> Info Lanjutan
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <header class="soy-header">
+            <div class="header-inner">
+                <div class="hero-bg">
+                    <div class="hero">
+                        <h1>PENDAFTARAN CALON FINALIS SOY 2026</h1>
+                        <div class="countdown-container">
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="days">48</div>
+                                <div class="countdown-label">Hari</div>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="hours">10</div>
+                                <div class="countdown-label">Jam</div>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="minutes">57</div>
+                                <div class="countdown-label">Menit</div>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="seconds">32</div>
+                                <div class="countdown-label">Detik</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="content">
+            <div class="form-wrap">
+                <form id="soyForm" class="soy-form" novalidate>
+                    <div class="form-grid">
+                        <div>
+                            <label for="nama">Nama Lengkap</label>
+                            <input id="nama" name="nama" type="text" required placeholder="Nama lengkap" />
+                        </div>
+
+                        <div>
+                            <label for="tanggalLahir">Tanggal Lahir</label>
+                            <div class="date-input-container">
+                                <input id="tanggalLahir" name="tanggalLahir" type="date" required />
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="tel">Nomor Telepon/WhatsApp</label>
+                            <input id="tel" name="tel" type="tel" required placeholder="08xxxxxxxxxx" />
+                        </div>
+
+                        <div>
+                            <label for="sekolah">Asal Sekolah</label>
+                            <input id="sekolah" name="sekolah" type="text" required placeholder="Nama sekolah" />
+                        </div>
+
+                        <div class="full">
+                            <label for="alamat">Alamat Rumah</label>
+                            <textarea id="alamat" name="alamat" required placeholder="Alamat lengkap rumah" maxlength="200"></textarea>
+                            <div class="note" style="text-align: right; margin-top: 5px;" id="charCount">0/200 karakter</div>
+                        </div>
+
+                        <div class="full">
+                            <label for="essai">Essai Tentang Diri Saya di Masa Depan</label>
+                            <textarea id="essai" name="essai" required placeholder="Ceritakan visi dan impian Anda untuk masa depan (minimal 200 kata)" minlength="200"></textarea>
+                            <div class="note" style="text-align: right; margin-top: 5px;" id="wordCount">0 kata</div>
+                        </div>
+
+                        <div class="full">
+                            <label for="fotoPribadi">Upload Foto Pribadi</label>
+                            <div class="upload-container">
+                                <div class="upload-box" id="uploadBox">
+                                    <div class="upload-icon-container">
+                                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                        <div class="upload-icon-pulse"></div>
+                                    </div>
+                                    <div class="upload-text">
+                                        <span class="upload-title">Upload Foto Pribadi</span>
+                                        <span id="fileName" class="file-name">Klik untuk memilih file atau drag & drop</span>
+                                    </div>
+                                    <div class="file-input-button" id="fileInputButton">
+                                        Pilih File
+                                    </div>
+                                    <input id="fotoPribadi" name="fotoPribadi" type="file" accept="image/*" style="display: none;" />
+                                </div>
+                                <div class="preview-container" id="previewContainer">
+                                    <img id="preview" class="payment-preview" alt="Preview Foto" />
+                                </div>
+                            </div>
+                            <p class="note">Format yang didukung: JPG, PNG (max 5MB)</p>
+                        </div>
+
+                        <div class="full actions">
+                            <button type="submit" class="btn btn-primary">Kirim Pendaftaran</button>
+                            <button type="reset" class="btn btn-secondary">Reset Form</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Footer - Improved -->
+            <footer class="footer">
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3>Tentang SOY</h3>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-history"></i> Sejarah</a></li>
+                            <li><a href="#"><i class="fas fa-bullseye"></i> Visi & Misi</a></li>
+                            <li><a href="#"><i class="fas fa-trophy"></i> Prestasi</a></li>
+                            <li><a href="#"><i class="fas fa-calendar-alt"></i> Agenda</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Finalis</h3>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i> Finalis 2025</a></li>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i> Finalis 2024</a></li>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i> Galeri</a></li>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i> Testimoni</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Kontak</h3>
+                        <ul>
+                            <li><a href="mailto:info@soy2026.com"><i class="fas fa-envelope"></i> info@soy2026.com</a></li>
+                            <li><a href="https://wa.me/6281218197283"><i class="fas fa-phone"></i> +62 812-1819-7283</a></li>
+                            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</a></li>
+                        </ul>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Newsletter</h3>
+                        <p>Dapatkan informasi terbaru tentang SOY 2026.</p>
+                        <form style="margin-top: 15px;">
+                            <input type="email" placeholder="Email Anda" required
+                                style="padding: 12px; width: 100%; margin: 10px 0; border-radius: 8px; border: 2px solid var(--primary-orange); background: var(--input-bg); color: var(--text-color); font-size: 0.9rem;">
+                            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Berlangganan</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 ELC Group. Semua Hak Dilindungi.</p>
+                </div>
+            </footer>
+        </section>
+    </main>
+
+    <script>
+        // Notification System
+        function showNotification(type, title, message, duration = 5000) {
+            const container = document.getElementById('notificationContainer');
+            const notificationId = 'notification-' + Date.now();
+
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.id = notificationId;
+
+            let icon;
+            switch (type) {
+                case 'success':
+                    icon = '<i class="fas fa-check-circle notification-icon"></i>';
+                    break;
+                case 'error':
+                    icon = '<i class="fas fa-exclamation-circle notification-icon"></i>';
+                    break;
+                case 'warning':
+                    icon = '<i class="fas fa-exclamation-triangle notification-icon"></i>';
+                    break;
+                case 'info':
+                    icon = '<i class="fas fa-info-circle notification-icon"></i>';
+                    break;
+            }
+
+            notification.innerHTML = `
+                ${icon}
+                <div class="notification-content">
+                    <div class="notification-title">${title}</div>
+                    <div class="notification-message">${message}</div>
+                </div>
+                <button class="notification-close" onclick="closeNotification('${notificationId}')">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="notification-progress"></div>
+            `;
+
+            container.appendChild(notification);
+
+            // Auto remove after duration
+            setTimeout(() => {
+                closeNotification(notificationId);
+            }, duration);
+        }
+
+        function closeNotification(id) {
+            const notification = document.getElementById(id);
+            if (notification) {
+                notification.classList.add('hiding');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }
+        }
+
+        // Modal Functions
+        function showLoadingModal() {
+            document.getElementById('loadingModal').classList.add('active');
+        }
+
+        function hideLoadingModal() {
+            document.getElementById('loadingModal').classList.remove('active');
+        }
+
+        function showSuccessModal() {
+            document.getElementById('successModal').classList.add('active');
+        }
+
+        function hideSuccessModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+
+        // Countdown target: 30 Desember 2025 23:59 local time
+        const target = new Date(2025, 11, 30, 23, 59, 0);
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = target - now;
+            
+            if (diff <= 0) {
+                document.getElementById('days').textContent = "00";
+                document.getElementById('hours').textContent = "00";
+                document.getElementById('minutes').textContent = "00";
+                document.getElementById('seconds').textContent = "00";
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hrs).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(mins).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(secs).padStart(2, '0');
+        }
+
+        updateCountdown();
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        // File upload handling
+        const fileInput = document.getElementById('fotoPribadi');
+        const preview = document.getElementById('preview');
+        const fileNameEl = document.getElementById('fileName');
+        const uploadBox = document.getElementById('uploadBox');
+        const previewContainer = document.getElementById('previewContainer');
+        const fileInputButton = document.getElementById('fileInputButton');
+
+        // Custom file input button
+        fileInputButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            fileInput.click();
+        });
+
+        // Drag & drop functions
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadBox.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadBox.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadBox.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight(e) {
+            uploadBox.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--secondary-orange');
+            uploadBox.style.background = 'rgba(255,102,0,0.08)';
+            uploadBox.classList.add('active');
+        }
+
+        function unhighlight(e) {
+            uploadBox.style.borderColor = '';
+            uploadBox.style.background = '';
+            uploadBox.classList.remove('active');
+        }
+
+        if (uploadBox) {
+            uploadBox.addEventListener('drop', handleDrop, false);
+            uploadBox.addEventListener('click', function () {
+                fileInput.click();
+            });
+            uploadBox.setAttribute('tabindex', '0');
+            uploadBox.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    fileInput.click();
+                }
+            });
+        }
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        function handleFiles(files) {
+            if (files.length) {
+                const file = files[0];
+                if (file.type.startsWith('image/')) {
+                    fileNameEl.textContent = file.name;
+                    const url = URL.createObjectURL(file);
+                    preview.src = url;
+                    preview.style.display = 'block';
+                    previewContainer.classList.add('show');
+                    fileInputButton.textContent = 'Ganti File';
+                }
+            }
+        }
+
+        fileInput.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (!file) {
+                preview.style.display = 'none';
+                previewContainer.classList.remove('show');
+                fileNameEl.textContent = 'Klik untuk memilih file atau drag & drop';
+                fileInputButton.textContent = 'Pilih File';
+                return;
+            }
+            handleFiles(this.files);
+        });
+
+        // Character and word count
+        const alamatTextarea = document.getElementById('alamat');
+        const charCount = document.getElementById('charCount');
+        const essaiTextarea = document.getElementById('essai');
+        const wordCount = document.getElementById('wordCount');
+
+        alamatTextarea.addEventListener('input', function() {
+            const count = this.value.length;
+            charCount.textContent = `${count}/200 karakter`;
+        });
+
+        essaiTextarea.addEventListener('input', function() {
+            const words = this.value.trim().split(/\s+/).filter(word => word.length > 0).length;
+            wordCount.textContent = `${words} kata`;
+            
+            if (words < 200) {
+                wordCount.style.color = 'var(--gray)';
+            } else {
+                wordCount.style.color = 'var(--primary-orange)';
+            }
+        });
+
+        // Form submission
+        const form = document.getElementById('soyForm');
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // Basic validation
+            const nama = document.getElementById('nama').value.trim();
+            const tanggalLahir = document.getElementById('tanggalLahir').value;
+            const tel = document.getElementById('tel').value.trim();
+            const sekolah = document.getElementById('sekolah').value.trim();
+            const alamat = document.getElementById('alamat').value.trim();
+            const essai = document.getElementById('essai').value.trim();
+            const fotoPribadi = fileInput.files.length;
+
+            if (!nama || !tanggalLahir || !tel || !sekolah || !alamat || !essai || !fotoPribadi) {
+                showNotification('warning', 'Data Tidak Lengkap', 'Lengkapi semua field yang diperlukan.', 4000);
+                return;
+            }
+
+            const wordCount = essai.trim().split(/\s+/).filter(word => word.length > 0).length;
+            if (wordCount < 200) {
+                showNotification('warning', 'Essai Terlalu Pendek', 'Essai harus minimal 200 kata.', 4000);
+                return;
+            }
+
+            // Show loading modal
+            showLoadingModal();
+
+            // Show loading
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Mengirim...';
+            submitBtn.disabled = true;
+
+            try {
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                // Hide loading modal and show success modal
+                hideLoadingModal();
+                showSuccessModal();
+                
+                // Reset form
+                form.reset();
+                preview.style.display = 'none';
+                previewContainer.classList.remove('show');
+                fileNameEl.textContent = 'Klik untuk memilih file atau drag & drop';
+                charCount.textContent = '0/200 karakter';
+                wordCount.textContent = '0 kata';
+                fileInputButton.textContent = 'Pilih File';
+            } catch (error) {
+                console.error('Error:', error);
+                hideLoadingModal();
+                showNotification('error', 'Gagal Mengirim', 'Terjadi kesalahan: ' + error.message, 5000);
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            // Check for saved theme preference or respect OS setting
+            if (localStorage.getItem('theme') === 'dark' || 
+                (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme'))) {
+                document.body.classList.add('dark-theme');
+                themeToggle.querySelector('i').classList.remove('fa-moon');
+                themeToggle.querySelector('i').classList.add('fa-sun');
+            }
+            
+            themeToggle.addEventListener('click', function () {
+                document.body.classList.toggle('dark-theme');
+                const icon = themeToggle.querySelector('i');
+                if (document.body.classList.contains('dark-theme')) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        }
+
+        // Close success modal when close button is clicked
+        document.getElementById('closeSuccessModal').addEventListener('click', function() {
+            hideSuccessModal();
+        });
+    </script>
+
+</body>
+</html>
