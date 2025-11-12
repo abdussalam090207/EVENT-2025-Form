@@ -110,7 +110,7 @@
 
                         <div class="full">
                             <label for="essai">Essai Tentang Diri Saya di Masa Depan</label>
-                            <textarea id="essai" name="essai" required placeholder="Ceritakan visi dan impian Anda untuk masa depan (minimal 200 kata)" minlength="200"></textarea>
+                            <textarea id="essai" name="essai" required placeholder="Ceritakan visi dan impian Anda untuk masa depan (minimal 50 kata)" minlength="50"></textarea>
                             <div class="note" style="text-align: right; margin-top: 5px;" id="wordCount">0 kata</div>
                         </div>
 
@@ -199,6 +199,18 @@
     </main>
 
     <script>
+        // ============================================
+        // GOOGLE APPS SCRIPT URL - GANTI DENGAN MILIK ANDA!
+        // ============================================
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx_wRfek4geCP5B4EJA0uhTv0wckOC-z2M04H4Gq0OwCIgShwfIjYZOpJBJPlkuB_gHIA/exec';
+        // Cara mendapatkan URL:
+        // 1. Buka Google Apps Script
+        // 2. Klik "Deploy" > "New deployment"
+        // 3. Pilih "Web app"
+        // 4. Execute as: "Me"
+        // 5. Who has access: "Anyone"
+        // 6. Copy URL yang diberikan
+
         // Notification System
         function showNotification(type, title, message, duration = 5000) {
             const container = document.getElementById('notificationContainer');
@@ -238,7 +250,6 @@
 
             container.appendChild(notification);
 
-            // Auto remove after duration
             setTimeout(() => {
                 closeNotification(notificationId);
             }, duration);
@@ -310,13 +321,11 @@
         const previewContainer = document.getElementById('previewContainer');
         const fileInputButton = document.getElementById('fileInputButton');
 
-        // Custom file input button
         fileInputButton.addEventListener('click', function(e) {
             e.stopPropagation();
             fileInput.click();
         });
 
-        // Drag & drop functions
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             uploadBox.addEventListener(eventName, preventDefaults, false);
         });
@@ -407,14 +416,16 @@
             const words = this.value.trim().split(/\s+/).filter(word => word.length > 0).length;
             wordCount.textContent = `${words} kata`;
             
-            if (words < 200) {
+            if (words < 50) {
                 wordCount.style.color = 'var(--gray)';
             } else {
                 wordCount.style.color = 'var(--primary-orange)';
             }
         });
 
-        // Form submission
+        // ============================================
+        // FORM SUBMISSION - KIRIM KE GOOGLE SHEETS
+        // ============================================
         const form = document.getElementById('soyForm');
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
@@ -433,41 +444,86 @@
                 return;
             }
 
-            const wordCount = essai.trim().split(/\s+/).filter(word => word.length > 0).length;
-            if (wordCount < 200) {
-                showNotification('warning', 'Essai Terlalu Pendek', 'Essai harus minimal 200 kata.', 4000);
+            const wordCountValue = essai.trim().split(/\s+/).filter(word => word.length > 0).length;
+            if (wordCountValue < 50) {
+                showNotification('warning', 'Essai Terlalu Pendek', 'Essai harus minimal 50 kata.', 4000);
+                return;
+            }
+
+            // Check file size (max 5MB)
+            const file = fileInput.files[0];
+            if (file.size > 5 * 1024 * 1024) {
+                showNotification('warning', 'File Terlalu Besar', 'Ukuran foto maksimal 5MB.', 4000);
                 return;
             }
 
             // Show loading modal
             showLoadingModal();
 
-            // Show loading
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Mengirim...';
             submitBtn.disabled = true;
 
             try {
-                // Simulate API call
-                await new Promise(resolve => setTimeout(resolve, 2000));
+                // Convert foto to base64
+                let fotoBase64 = '';
+                if (file) {
+                    fotoBase64 = await new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onload = () => resolve(reader.result);
+                        reader.onerror = reject;
+                        reader.readAsDataURL(file);
+                    });
+                }
 
-                // Hide loading modal and show success modal
-                hideLoadingModal();
-                showSuccessModal();
+                // Prepare form data
+                const formData = new URLSearchParams();
+                formData.append('source', 'soy'); // PENTING: Identifier untuk routing
+                formData.append('nama', nama);
+                formData.append('tanggalLahir', tanggalLahir);
+                formData.append('tel', tel);
+                formData.append('sekolah', sekolah);
+                formData.append('alamat', alamat);
+                formData.append('essai', essai);
+                formData.append('fotoBase64', fotoBase64);
+                formData.append('fileName', file.name);
+                formData.append('fileType', file.type);
+                formData.append('timestamp', new Date().toISOString());
+
+                // Send to Google Apps Script
+                const response = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                });
+
+                const result = await response.json();
                 
-                // Reset form
-                form.reset();
-                preview.style.display = 'none';
-                previewContainer.classList.remove('show');
-                fileNameEl.textContent = 'Klik untuk memilih file atau drag & drop';
-                charCount.textContent = '0/200 karakter';
-                wordCount.textContent = '0 kata';
-                fileInputButton.textContent = 'Pilih File';
+                hideLoadingModal();
+
+                if (result.status === 'success') {
+                    showSuccessModal();
+                    
+                    // Reset form
+                    form.reset();
+                    preview.style.display = 'none';
+                    previewContainer.classList.remove('show');
+                    fileNameEl.textContent = 'Klik untuk memilih file atau drag & drop';
+                    charCount.textContent = '0/200 karakter';
+                    wordCount.textContent = '0 kata';
+                    fileInputButton.textContent = 'Pilih File';
+                    
+                    console.log('✅ Pendaftaran berhasil:', result);
+                } else {
+                    showNotification('error', 'Gagal Mengirim', result.message || 'Terjadi kesalahan pada server.', 5000);
+                }
             } catch (error) {
                 console.error('Error:', error);
                 hideLoadingModal();
-                showNotification('error', 'Gagal Mengirim', 'Terjadi kesalahan: ' + error.message, 5000);
+                showNotification('error', 'Gagal Mengirim', 'Tidak dapat terhubung ke server. Periksa koneksi internet Anda.', 5000);
             } finally {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
@@ -477,7 +533,6 @@
         // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
         if (themeToggle) {
-            // Check for saved theme preference or respect OS setting
             if (localStorage.getItem('theme') === 'dark' || 
                 (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme'))) {
                 document.body.classList.add('dark-theme');
@@ -500,7 +555,7 @@
             });
         }
 
-        // Close success modal when close button is clicked
+        // Close success modal
         document.getElementById('closeSuccessModal').addEventListener('click', function() {
             hideSuccessModal();
         });
