@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pendaftaran Calon Finalis SOY 2026</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/footer.css">
-    <link rel="stylesheet" href="finalissoy.css"/>
+    <link rel="stylesheet" href="finalissoy.css" />
 </head>
 
 <body>
@@ -33,7 +34,8 @@
                 <i class="fas fa-check-circle"></i>
             </div>
             <h3 class="modal-title">Pendaftaran Berhasil!</h3>
-            <p class="modal-message">Terima kasih telah mendaftar sebagai calon Finalis SOY 2026. Kami akan menghubungi Anda untuk informasi lebih lanjut.</p>
+            <p class="modal-message">Terima kasih telah mendaftar sebagai calon Finalis SOY 2026. Kami akan menghubungi
+                Anda untuk informasi lebih lanjut.</p>
             <div class="modal-buttons">
                 <button class="modal-btn modal-btn-secondary" id="closeSuccessModal">Tutup</button>
                 <a href="/index.html" target="_blank" class="modal-btn modal-btn-primary">
@@ -104,13 +106,17 @@
 
                         <div class="full">
                             <label for="alamat">Alamat Rumah</label>
-                            <textarea id="alamat" name="alamat" required placeholder="Alamat lengkap rumah" maxlength="200"></textarea>
-                            <div class="note" style="text-align: right; margin-top: 5px;" id="charCount">0/200 karakter</div>
+                            <textarea id="alamat" name="alamat" required placeholder="Alamat lengkap rumah"
+                                maxlength="200"></textarea>
+                            <div class="note" style="text-align: right; margin-top: 5px;" id="charCount">0/200 karakter
+                            </div>
                         </div>
 
                         <div class="full">
                             <label for="essai">Essai Tentang Diri Saya di Masa Depan</label>
-                            <textarea id="essai" name="essai" required placeholder="Ceritakan visi dan impian Anda untuk masa depan (minimal 50 kata)" minlength="50"></textarea>
+                            <textarea id="essai" name="essai" required
+                                placeholder="Ceritakan visi dan impian Anda untuk masa depan (minimal 50 kata)"
+                                minlength="50"></textarea>
                             <div class="note" style="text-align: right; margin-top: 5px;" id="wordCount">0 kata</div>
                         </div>
 
@@ -124,12 +130,14 @@
                                     </div>
                                     <div class="upload-text">
                                         <span class="upload-title">Upload Foto Pribadi</span>
-                                        <span id="fileName" class="file-name">Klik untuk memilih file atau drag & drop</span>
+                                        <span id="fileName" class="file-name">Klik untuk memilih file atau drag &
+                                            drop</span>
                                     </div>
                                     <div class="file-input-button" id="fileInputButton">
                                         Pilih File
                                     </div>
-                                    <input id="fotoPribadi" name="fotoPribadi" type="file" accept="image/*" style="display: none;" />
+                                    <input id="fotoPribadi" name="fotoPribadi" type="file" accept="image/*"
+                                        style="display: none;" />
                                 </div>
                                 <div class="preview-container" id="previewContainer">
                                     <img id="preview" class="payment-preview" alt="Preview Foto" />
@@ -170,8 +178,10 @@
                     <div class="footer-column">
                         <h3>Kontak</h3>
                         <ul>
-                            <li><a href="mailto:info@soy2026.com"><i class="fas fa-envelope"></i> info@soy2026.com</a></li>
-                            <li><a href="https://wa.me/6281218197283"><i class="fas fa-phone"></i> +62 812-1819-7283</a></li>
+                            <li><a href="mailto:info@soy2026.com"><i class="fas fa-envelope"></i> info@soy2026.com</a>
+                            </li>
+                            <li><a href="https://wa.me/6281218197283"><i class="fas fa-phone"></i> +62 812-1819-7283</a>
+                            </li>
                             <li><a href="#"><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</a></li>
                         </ul>
                         <div class="social-links">
@@ -187,7 +197,8 @@
                         <form style="margin-top: 15px;">
                             <input type="email" placeholder="Email Anda" required
                                 style="padding: 12px; width: 100%; margin: 10px 0; border-radius: 8px; border: 2px solid var(--primary-orange); background: var(--input-bg); color: var(--text-color); font-size: 0.9rem;">
-                            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Berlangganan</button>
+                            <button type="submit" class="btn btn-primary"
+                                style="width: 100%; margin-top: 10px;">Berlangganan</button>
                         </form>
                     </div>
                 </div>
@@ -287,10 +298,22 @@
         // Countdown target: 30 Desember 2025 23:59 local time
         const target = new Date(2025, 11, 30, 23, 59, 0);
 
+        const timer = setInterval(() => {
+            const now = new Date();
+            const diff = target - now;
+
+            if (diff <= 0) {
+                clearInterval(timer);
+                // Redirect ke halaman waktu habis
+                window.location.href = "index-waktuhabis.html";
+                return;
+            }
+        }, 1000);
+
         function updateCountdown() {
             const now = new Date();
             const diff = target - now;
-            
+
             if (diff <= 0) {
                 document.getElementById('days').textContent = "00";
                 document.getElementById('hours').textContent = "00";
@@ -298,12 +321,12 @@
                 document.getElementById('seconds').textContent = "00";
                 return;
             }
-            
+
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const secs = Math.floor((diff % (1000 * 60)) / 1000);
-            
+
             document.getElementById('days').textContent = String(days).padStart(2, '0');
             document.getElementById('hours').textContent = String(hrs).padStart(2, '0');
             document.getElementById('minutes').textContent = String(mins).padStart(2, '0');
@@ -321,7 +344,7 @@
         const previewContainer = document.getElementById('previewContainer');
         const fileInputButton = document.getElementById('fileInputButton');
 
-        fileInputButton.addEventListener('click', function(e) {
+        fileInputButton.addEventListener('click', function (e) {
             e.stopPropagation();
             fileInput.click();
         });
@@ -407,15 +430,15 @@
         const essaiTextarea = document.getElementById('essai');
         const wordCount = document.getElementById('wordCount');
 
-        alamatTextarea.addEventListener('input', function() {
+        alamatTextarea.addEventListener('input', function () {
             const count = this.value.length;
             charCount.textContent = `${count}/200 karakter`;
         });
 
-        essaiTextarea.addEventListener('input', function() {
+        essaiTextarea.addEventListener('input', function () {
             const words = this.value.trim().split(/\s+/).filter(word => word.length > 0).length;
             wordCount.textContent = `${words} kata`;
-            
+
             if (words < 50) {
                 wordCount.style.color = 'var(--gray)';
             } else {
@@ -501,12 +524,12 @@
                 });
 
                 const result = await response.json();
-                
+
                 hideLoadingModal();
 
                 if (result.status === 'success') {
                     showSuccessModal();
-                    
+
                     // Reset form
                     form.reset();
                     preview.style.display = 'none';
@@ -515,7 +538,7 @@
                     charCount.textContent = '0/200 karakter';
                     wordCount.textContent = '0 kata';
                     fileInputButton.textContent = 'Pilih File';
-                    
+
                     console.log('✅ Pendaftaran berhasil:', result);
                 } else {
                     showNotification('error', 'Gagal Mengirim', result.message || 'Terjadi kesalahan pada server.', 5000);
@@ -533,13 +556,13 @@
         // Theme toggle
         const themeToggle = document.getElementById('themeToggle');
         if (themeToggle) {
-            if (localStorage.getItem('theme') === 'dark' || 
+            if (localStorage.getItem('theme') === 'dark' ||
                 (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme'))) {
                 document.body.classList.add('dark-theme');
                 themeToggle.querySelector('i').classList.remove('fa-moon');
                 themeToggle.querySelector('i').classList.add('fa-sun');
             }
-            
+
             themeToggle.addEventListener('click', function () {
                 document.body.classList.toggle('dark-theme');
                 const icon = themeToggle.querySelector('i');
@@ -556,10 +579,11 @@
         }
 
         // Close success modal
-        document.getElementById('closeSuccessModal').addEventListener('click', function() {
+        document.getElementById('closeSuccessModal').addEventListener('click', function () {
             hideSuccessModal();
         });
     </script>
 
 </body>
+
 </html>
