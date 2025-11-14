@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ELC EXPO 2025 - Pendaftaran Karya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="expo.css" />
+    <link rel="stylesheet" href="/footer.css">
+</head>
+
+<body>
+    <!-- Starfield Background -->
+    <div class="starfield"></div>
+
+    <!-- Dark Mode Toggle -->
+    <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/6289531657198" class="whatsapp-float" target="_blank" title="Hubungi via WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Loading Modal -->
+    <div class="modal-overlay" id="loadingModal">
+        <div class="modal modal-loading">
+            <div class="spinner"></div>
+            <h3 class="modal-title">Mengirim Data</h3>
+            <p class="modal-message">Harap tunggu, data pendaftaran sedang dikirim...</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal modal-success">
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="modal-title">Pendaftaran Berhasil!</h3>
+            <p class="modal-message">Terima kasih telah mendaftar untuk ELC EXPO 2025. Kami akan menghubungi Anda untuk informasi lebih lanjut.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-secondary" id="closeSuccessModal">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <header class="expo-header">
+            <div class="header-inner">
+                <div class="hero-bg">
+                    <div class="hero">
+                        <h1>ELC EXPO 2025</h1>
+                        <p class="countdown-title">Sisa waktu pengumpulan Karya:</p>
+                        <div class="countdown-container">
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="days">00</div>
+                                <div class="countdown-label">Hari</div>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="hours">00</div>
+                                <div class="countdown-label">Jam</div>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="minutes">00</div>
+                                <div class="countdown-label">Menit</div>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <div class="countdown-value" id="seconds">00</div>
+                                <div class="countdown-label">Detik</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="content">
+            <div class="form-wrap">
+                <form id="expoForm" class="expo-form" novalidate>
+                    <div class="form-grid">
+                        <div>
+                            <label for="nama">Nama Lengkap</label>
+                            <input id="nama" name="nama" type="text" required placeholder="Nama lengkap" />
+                        </div>
+
+                        <div>
+                            <label for="wa">Nomor WhatsApp</label>
+                            <input id="wa" name="wa" type="tel" required placeholder="08xxxxxxxxxx" />
+                        </div>
+
+                        <div>
+                            <label for="sekolah">Asal Sekolah</label>
+                            <input id="sekolah" name="sekolah" type="text" required placeholder="Nama sekolah" />
+                        </div>
+
+                        <div>
+                            <label for="karya">Nama Karya</label>
+                            <input id="karya" name="karya" type="text" required placeholder="Nama karya Anda" />
+                        </div>
+
+                        <div class="full">
+                            <label for="foto">Upload Foto Karya</label>
+                            <div class="upload-container">
+                                <div class="upload-box" id="uploadBox">
+                                    <div class="upload-icon-container">
+                                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                        <div class="upload-icon-pulse"></div>
+                                    </div>
+                                    <div class="upload-text">
+                                        <span class="upload-title">Upload Foto Karya</span>
+                                        <span id="fileName" class="file-name">Klik untuk memilih file atau drag & drop</span>
+                                    </div>
+                                    <div class="file-input-button" id="fileInputButton">
+                                        Pilih File
+                                    </div>
+                                    <input id="foto" name="foto" type="file" accept="image/*"
+                                        style="display: none;" />
+                                </div>
+                                <div class="preview-container" id="previewContainer">
+                                    <img id="preview" class="photo-preview" alt="Preview Foto" />
+                                </div>
+                            </div>
+                            <p class="note">Format yang didukung: JPG, PNG (max 5MB)</p>
+                        </div>
+
+                        <div class="full actions">
+                            <button type="submit" class="btn btn-primary">Kirim Pendaftaran</button>
+                            <button type="reset" class="btn btn-secondary">Reset Form</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="footer-content">
+                    <div class="footer-grid">
+                        <div class="footer-column">
+                            <h3>Tentang Kami</h3>
+                            <ul>
+                                <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i
+                                            class="fas fa-history"></i> Sejarah</a></li>
+                                <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i
+                                            class="fas fa-bullseye"></i> Visi & Misi</a></li>
+                                <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i
+                                            class="fas fa-users"></i> Tim Kami</a></li>
+                                <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i
+                                            class="fas fa-briefcase"></i> Bimbel</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h3>Organisasi</h3>
+                            <ul>
+                                <li><a href="#"><i class="fas fa-arrow-right"></i> ERC</a></li>
+                                <li><a href="#"><i class="fas fa-arrow-right"></i> ESC</a></li>
+                                <li><a href="#"><i class="fas fa-arrow-right"></i> WARCLUB</a></li>
+                                <li><a href="#"><i class="fas fa-arrow-right"></i> ERA</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h3>Kontak</h3>
+                            <ul>
+                                <li><a href="mailto:elccakung@gmail.com"><i class="fas fa-envelope"></i>
+                                        elccakung@gmail.com</a>
+                                </li>
+                                <li><a href="https://wa.me/6281218197283"><i class="fas fa-phone"></i> +62 812-1819-7283</a>
+                                </li>
+                                <li><a href="https://maps.app.goo.gl/HTcDgXyYenpggH7g6"><i
+                                            class="fas fa-map-marker-alt"></i>
+                                        Jl. Komp. Ruko Ujung Menteng, Kec. Cakung, Kota Jakarta Timur</a></li>
+                            </ul>
+                            <div class="social-links">
+                                <a href="https://www.facebook.com/eci.learningcare"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="https://www.instagram.com/elc_learning_care/"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="footer-column">
+                            <h3>Newsletter</h3>
+                            <p>Dapatkan informasi terbaru tentang kami.</p>
+                            <form style="margin-top: 15px;">
+                                <input type="email" placeholder="Email Anda"
+                                    style="padding: 12px; width: 100%; margin: 10px 0; border-radius: 8px; border: 1px solid var(--input-border); background: var(--input-bg); color: var(--text-color); font-size: 0.9rem;">
+                                <button type="submit" class="btn btn-primary"
+                                    style="width: 100%; margin-top: 10px;">Share</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <p>&copy; 2025 ELC Group. Semua Hak Dilindungi.</p>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </main>
+
+    <script src="expo.js"></script>
+</body>
+
+</html>

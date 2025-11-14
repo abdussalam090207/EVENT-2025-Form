@@ -202,7 +202,7 @@ fileInput.addEventListener('change', function (e) {
 
 // Google Apps Script URL - GANTI DENGAN URL ANDA
 // Google Apps Script URL - PASTIKAN INI URL DEPLOYMENT TERBARU
-const scriptURL = 'https://script.google.com/macros/s/AKfycbx_wRfek4geCP5B4EJA0uhTv0wckOC-z2M04H4Gq0OwCIgShwfIjYZOpJBJPlkuB_gHIA/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbz2ZQnKVxZiQjsiOBEb6aCF3CrtpXKgUptw2FZqnUuADbJW3N_DE4ngb0PkoK-WH4VbOg/exec';
 
 // Form submission - DENGAN KONVERSI BASE64 UNTUK FILE
 const form = document.getElementById('mproForm');
