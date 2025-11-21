@@ -72,7 +72,7 @@ function hideSuccessModal() {
 }
 
 // Countdown target: 20 Nov 2025 23:59 local time
-const target = new Date(2025, 10, 20, 23, 59, 0);
+const target = new Date(2025, 10, 21, 23, 59, 0);
 
 function formatDays(days) {
     if (days <= 0) return '';
