@@ -51,10 +51,10 @@ const timer = setInterval(() => {
     const diff = target - now;
 
     if (diff <= 0) {
-        clearInterval(timer);
-        window.location.href = "index-waktuhabis.html";
+        window.location.replace('../index-waktuhabis.html');
         return;
     }
+
 }, 1000);
 
 function updateCountdown() {
@@ -311,8 +311,8 @@ form.addEventListener('submit', async function (e) {
         formData.append('timestamp', new Date().toISOString());
 
         // --- START GOOGLE APPS SCRIPT INTEGRATION ---
-        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz2ZQnKVxZiQjsiOBEb6aCF3CrtpXKgUptw2FZqnUuADbJW3N_DE4ngb0PkoK-WH4VbOg/exec'; // GANTI DENGAN URL DEPLOYMENT APPS SCRIPT ANDA
-        
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwo1803N_U1cTjAFaonqyk7z7apxoWQy-KX-9tesC0Cg2vrc0fWtVjbnsEz4cDMIZYmvg/exec'; // GANTI DENGAN URL DEPLOYMENT APPS SCRIPT ANDA
+
         if (APPS_SCRIPT_URL === 'PASTE_URL_APPS_SCRIPT_ANDA_DI_SINI') {
             throw new Error('URL Apps Script belum diatur. Harap ganti placeholder URL.');
         }
@@ -330,7 +330,7 @@ form.addEventListener('submit', async function (e) {
         if (result.status === 'success') {
             hideLoadingModal();
             showSuccessModal();
-            
+
             // Reset form
             form.reset();
             preview.src = '';

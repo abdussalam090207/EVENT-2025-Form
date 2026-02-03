@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>REGISTRASI MPRO SENIOR 2025</title>
+    <link rel="stylesheet" href="../Halaman Utama/styles-segment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="mprosenior2026.css">
+</head>
+
+<body>
+
+    <!-- Theme Toggle and WhatsApp like main page (kept minimal) -->
+    <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+    <a href="https://wa.me/6289531657198" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Loading Modal -->
+    <div class="modal-overlay" id="loadingModal">
+        <div class="modal modal-loading">
+            <div class="spinner"></div>
+            <h3 class="modal-title">Mengirim Data</h3>
+            <p class="modal-message">Harap tunggu, data pendaftaran sedang dikirim...</p>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal modal-success">
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3 class="modal-title">Pendaftaran Berhasil!</h3>
+            <p class="modal-message">Terima kasih telah mendaftar MPRO Senior 2025. Bergabunglah dengan grup WhatsApp
+                kami untuk informasi lebih lanjut.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-secondary" id="closeSuccessModal">Tutup</button>
+                <a href="https://chat.whatsapp.com/EwAdr0Cw7qX8KeIAXQZDZR" target="_blank"
+                    class="modal-btn modal-btn-primary">
+                    <i class="fab fa-whatsapp"></i> Gabung Grup
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <header class="mpro-header">
+            <div class="header-inner">
+                <div class="hero-bg">
+                    <div class="hero">
+                        <h1>REGISTRASI MPRO SENIOR 2026</h1>
+                        <div class="countdown-container">
+                            <div class="countdown-box">
+                                <div class="countdown-value" id="days">26</div>
+                                <div class="countdown-label">HARI</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="countdown-value" id="hours">07</div>
+                                <div class="countdown-label">JAM</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="countdown-value" id="minutes">44</div>
+                                <div class="countdown-label">MENIT</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div class="countdown-value" id="seconds">20</div>
+                                <div class="countdown-label">DETIK</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="content">
+            <div class="form-wrap">
+                <form id="mproForm" class="mpro-form" novalidate>
+                    <div class="form-grid">
+                        <div>
+                            <label for="nama">Nama Lengkap</label>
+                            <input id="nama" name="nama" type="text" required placeholder="Nama lengkap" />
+                        </div>
+
+                        <div>
+                            <label for="sekolah">Nama Sekolah</label>
+                            <input id="sekolah" name="sekolah" type="text" required placeholder="Nama sekolah" />
+                        </div>
+
+                        <div>
+                            <label for="kategori">Kategori</label>
+                            <div class="kategori-field">
+                                <span class="kategori-value">Senior</span>
+                                <input type="hidden" name="kategori" value="Senior" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="tel">Nomor Telepon</label>
+                            <input id="tel" name="tel" type="tel" required placeholder="08xxxxxxxxxx" />
+                        </div>
+
+                        <div class="full">
+                            <label>Bukti Pembayaran</label>
+
+                            <!-- Payment Information Note -->
+                            <div class="payment-info">
+                                <div class="payment-info-icon">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <div class="payment-info-content">
+                                    <div class="payment-info-title">Transfer ke rekening berikut:</div>
+                                    <div class="payment-info-detail">
+                                        <span class="payment-info-bank">BCA a.n. Eka Novendra</span>
+                                        <span class="payment-info-number">8780150832</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="toggle-group" role="radiogroup" aria-label="Metode Bukti Pembayaran">
+                                <button type="button" class="toggle-btn active" data-value="menyusul">Menyusul</button>
+                                <button type="button" class="toggle-btn" data-value="upload">Upload Gambar</button>
+                            </div>
+
+                            <div id="uploadArea" style="margin-top:12px; display:none;">
+                                <div class="upload-container">
+                                    <div class="upload-box">
+                                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                        <div class="upload-text">
+                                            <span class="upload-title">Upload Bukti Pembayaran</span>
+                                            <span id="fileName" class="file-name">Klik untuk memilih file atau drag &
+                                                drop</span>
+                                        </div>
+                                        <input id="buktiFile" name="buktiFile" class="file-input-hidden" type="file"
+                                            accept="image/*" />
+                                    </div>
+                                    <div class="preview-container">
+                                        <img id="preview" class="payment-preview" alt="Preview Bukti" />
+                                    </div>
+                                </div>
+                                <p class="note">Format yang didukung: JPG, PNG (max 5MB)</p>
+                            </div>
+
+                            <style>
+                                .upload-container {
+                                    margin-top: 15px;
+                                }
+
+                                .upload-box {
+                                    border: 2px dashed var(--primary-blue);
+                                    border-radius: 10px;
+                                    padding: 20px;
+                                    text-align: center;
+                                    cursor: pointer;
+                                    transition: all 0.3s ease;
+                                    background: rgba(26, 115, 232, 0.03);
+                                    position: relative;
+                                }
+
+                                .upload-box:hover {
+                                    border-color: var(--secondary-blue);
+                                    background: rgba(26, 115, 232, 0.06);
+                                }
+
+                                .upload-icon {
+                                    font-size: 2rem;
+                                    color: var(--primary-blue);
+                                    margin-bottom: 10px;
+                                }
+
+                                .upload-text {
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 5px;
+                                }
+
+                                .upload-title {
+                                    font-weight: 600;
+                                    color: var(--text-color);
+                                }
+
+                                .preview-container {
+                                    margin-top: 15px;
+                                    border-radius: 8px;
+                                    overflow: hidden;
+                                }
+
+                                .payment-preview {
+                                    max-width: 100%;
+                                    border-radius: 8px;
+                                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                                }
+
+                                .dark-theme .upload-box {
+                                    background: rgba(26, 115, 232, 0.1);
+                                    border-color: var(--primary-blue);
+                                }
+
+                                .dark-theme .upload-title {
+                                    color: #fff;
+                                }
+
+                                .dark-theme .file-name {
+                                    color: #888;
+                                }
+                            </style>
+                        </div>
+
+                        <div class="full" style="display:flex; gap:12px; justify-content:flex-end;">
+                            <button type="submit" class="btn">Kirim Pendaftaran</button>
+                            <button type="reset" class="btn"
+                                style="background:var(--light-gray); color:var(--text-color);">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Full footer copied from main theme for consistency -->
+            <footer class="footer">
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3>Tentang Kami</h3>
+                        <ul>
+                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i
+                                        class="fas fa-history"></i> Sejarah</a></li>
+                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i
+                                        class="fas fa-bullseye"></i> Visi & Misi</a></li>
+                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i
+                                        class="fas fa-users"></i> Tim Kami</a></li>
+                            <li><a href="https://knovendra.wixsite.com/bimbelelc/eci-learning-care"><i
+                                        class="fas fa-briefcase"></i> Bimbel</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Organisasi</h3>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i> ERC</a></li>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i> ESC</a></li>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i> WARCLUB</a></li>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i> ERA</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Kontak</h3>
+                        <ul>
+                            <li><a href="mailto:elccakung@gmail.com"><i class="fas fa-envelope"></i>
+                                    elccakung@gmail.com</a></li>
+                            <li><a href="https://wa.me/6281218197283"><i class="fas fa-phone"></i> +62 812-1819-7283</a>
+                            </li>
+                            <li><a href="https://maps.app.goo.gl/HTcDgXyYenpggH7g6"><i
+                                        class="fas fa-map-marker-alt"></i> Jl. Komp. Ruko Ujung Menteng, Kec. Cakung,
+                                    Kota Jakarta Timur</a></li>
+                        </ul>
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/eci.learningcare"><i class="fab fa-facebook-f"></i></a>
+                            <a href="/Notfound/notfound.html"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/elc_learning_care/"><i class="fab fa-instagram"></i></a>
+                            <a href="/Notfound/notfound.html"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Newsletter</h3>
+                        <p>Dapatkan informasi terbaru tentang kami.</p>
+                        <form style="margin-top: 15px;">
+                            <input type="email" placeholder="Email Anda"
+                                style="padding: 12px; width: 100%; margin: 10px 0; border-radius: 8px; border: 1px solid var(--light-gray); background: var(--card-bg); color: var(--text-color); font-size: 0.9rem;">
+                            <button type="submit" class="btn" style="width: 100%;">Share</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 ELC Group. Semua Hak Dilindungi.</p>
+                </div>
+            </footer>
+        </section>
+    </main>
+
+    <script src="mprosenior2026.js">
+        // Notification System
+
+    </script>
+
+</body>
+
+</html>

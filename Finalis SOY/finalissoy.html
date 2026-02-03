@@ -220,7 +220,7 @@
         // ============================================
         // GOOGLE APPS SCRIPT URL - GANTI DENGAN MILIK ANDA!
         // ============================================
-        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz2ZQnKVxZiQjsiOBEb6aCF3CrtpXKgUptw2FZqnUuADbJW3N_DE4ngb0PkoK-WH4VbOg/exec';
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwo1803N_U1cTjAFaonqyk7z7apxoWQy-KX-9tesC0Cg2vrc0fWtVjbnsEz4cDMIZYmvg/exec';
         // Cara mendapatkan URL:
         // 1. Buka Google Apps Script
         // 2. Klik "Deploy" > "New deployment"
@@ -303,7 +303,7 @@
         }
 
         // Countdown target: 30 Desember 2025 23:59 local time
-        const target = new Date(2026, 02, 08, 23, 59, 0);
+        const target = new Date(2026, 01, 01, 23, 59, 0);
 
         const timer = setInterval(() => {
             const now = new Date();
@@ -312,7 +312,7 @@
             if (diff <= 0) {
                 clearInterval(timer);
                 // Redirect ke halaman waktu habis
-                window.location.href = "index-waktuhabis.html";
+                window.location.href = "indexwaktufinalishabis.html";
                 return;
             }
         }, 1000);
