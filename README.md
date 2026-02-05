@@ -93,39 +93,41 @@ EVENT-2025-Form/
   <img src="Asset/ss4" alt="SS previw projek">
 </p>
 
-```🚀 Cara Menjalankan Project (Local)
+
+## 🚀 Cara Menjalankan Project (Local)
+
+```
 git clone https://github.com/abdussalam090207/EVENT-2025-Form.git
 cd EVENT-2025-Form
 ```
 
 ## ⚙️ Konfigurasi Google Apps Script
-**
-> Buat project Google Apps Script
-> Hubungkan ke Google Spreadsheet
-> Deploy sebagai Web App
-> Set akses ke: Anyone
-> Method request: POST
-> Masukkan URL Web App ke JavaScript
-**
-📊 Database
 
-Semua data peserta tersimpan otomatis
+- Buat project Google Apps Script
+- Hubungkan ke Google Spreadsheet
+- Deploy sebagai Web App
+- Set akses ke: Anyone
+- Method request: POST
+- Masukkan URL Web App ke JavaScript
 
-Real-time & aman
+---
 
-Mudah diekspor ke Excel / CSV
+## 📊 Database
 
-Tidak memerlukan server hosting tambahan
+- Semua data peserta tersimpan otomatis
+- Real-time & aman
+- Mudah diekspor ke Excel / CSV
+- Tidak memerlukan server hosting tambahan
 
-👨‍💻 Developer
+##👨‍💻 Developer
 
-Abdus Salam
-🎓 SMKN 26 Jakarta – SIJA
-📌 EVENT 2025 Registration System
+*Abdus Salam
+*🎓 SMKN 26 Jakarta – SIJA
+*📌 EVENT 2025 Registration System
 
-🔗 GitHub: abdussalam090207
+*🔗 GitHub: abdussalam090207
 
-⭐ Dukungan
+*⭐ Dukungan
 
 Jika project ini bermanfaat:
 
@@ -135,7 +137,7 @@ Jika project ini bermanfaat:
 
 💬 Kirim feedback atau ide fitur baru
 
-📜 Lisensi
+###📜 Lisensi
 
-Project ini dibuat untuk kebutuhan edukasi dan event.
-Bebas digunakan dan dikembangkan dengan mencantumkan kredit.
+> Project ini dibuat untuk kebutuhan edukasi dan event.
+> Bebas digunakan dan dikembangkan dengan mencantumkan kredit.
