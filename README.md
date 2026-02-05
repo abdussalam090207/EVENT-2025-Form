@@ -87,10 +87,10 @@ EVENT-2025-Form/
 ## 🖼️ Preview Tampilan
 
 <p align="center">
-  <img src="Asset/ss1" alt="SS previw projek">
-  <img src="Asset/ss2" alt="SS previw projek">
-  <img src="Asset/ss3" alt="SS previw projek">
-  <img src="Asset/ss4" alt="SS previw projek">
+  <img src="Asset/ss1.png" alt="SS previw projek">
+  <img src="Asset/ss2.png" alt="SS previw projek">
+  <img src="Asset/ss3.png" alt="SS previw projek">
+  <img src="Asset/ss4.png" alt="SS previw projek">
 </p>
 
 
