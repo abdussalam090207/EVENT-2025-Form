@@ -65,6 +65,7 @@ Website ini menggunakan **HTML, CSS, dan JavaScript** sebagai frontend, serta **
 ---
 
 ## 📂 Struktur Folder
+```
 EVENT-2025-Form/
 ├── Asset/
 ├── EVENT-2025-Form/
@@ -80,8 +81,7 @@ EVENT-2025-Form/
 ├── footer.css
 ├── index.html
 └── index-waktuhabis.html
-
-
+```
 ---
 
 ## 🖼️ Preview Tampilan
