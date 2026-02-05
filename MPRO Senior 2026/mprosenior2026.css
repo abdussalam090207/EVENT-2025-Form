@@ -589,11 +589,13 @@
        transition: all 0.2s ease;
        border: none;
        font-size: 0.95rem;
+       text-decoration: none;
    }
 
    .modal-btn-primary {
        background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
        color: white;
+       text-decoration: none;
    }
 
    .modal-btn-secondary {
