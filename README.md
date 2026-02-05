@@ -86,9 +86,6 @@ EVENT-2025-Form/
 
 ## 🖼️ Preview Tampilan
 
-> 📸 Tambahkan screenshot website kamu di folder `/Asset`  
-> lalu ganti link di bawah ini
-
 <p align="center">
   <img src="Asset/ss1" alt="SS previw projek">
   <img src="Asset/ss2" alt="SS previw projek">
@@ -101,20 +98,15 @@ git clone https://github.com/abdussalam090207/EVENT-2025-Form.git
 cd EVENT-2025-Form
 ```
 
-⚙️ Konfigurasi Google Apps Script
-
-Buat project Google Apps Script
-
-Hubungkan ke Google Spreadsheet
-
-Deploy sebagai Web App
-
-Set akses ke: Anyone
-
-Method request: POST
-
-Masukkan URL Web App ke JavaScript
-
+## ⚙️ Konfigurasi Google Apps Script
+**
+> Buat project Google Apps Script
+> Hubungkan ke Google Spreadsheet
+> Deploy sebagai Web App
+> Set akses ke: Anyone
+> Method request: POST
+> Masukkan URL Web App ke JavaScript
+**
 📊 Database
 
 Semua data peserta tersimpan otomatis
