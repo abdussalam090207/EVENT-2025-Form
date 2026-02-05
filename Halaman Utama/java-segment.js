@@ -85,8 +85,8 @@ if (window.innerWidth > 992) {
 // Typing Text Effect (1 baris bergantian)
 const typingText = document.getElementById('typingText');
 const texts = [
-    "EVENT AKHIR TAHUN",
-    "EXPO ELC GROUP 2025", 
+    "SELAMAT DATANG",
+    "CAST VESTIVAL", 
     "BURUAN DAFTAR!!!"
 ];
 let textIndex = 0;
