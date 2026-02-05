@@ -121,21 +121,18 @@ cd EVENT-2025-Form
 
 ## 👨‍💻 Developer
 
-*Abdus Salam
+**Abdus Salam**
 * 🎓 SMKN 26 Jakarta – SIJA
 * 📌 EVENT 2025 Registration System
 
-* 🔗 GitHub: <p> <a href="https://github.com/abdussalam090207"> abdussalam090207 </p>
+🔗 GitHub: <p> <a href="https://github.com/abdussalam090207"> abdussalam090207 </p>
 
 ### ⭐ Dukungan
 
 Jika project ini bermanfaat:
-
-⭐ Beri star pada repository
-
-🔄 Fork untuk dikembangkan
-
-💬 Kirim feedback atau ide fitur baru
+* ⭐ Beri star pada repository
+* 🔄 Fork untuk dikembangkan
+* 💬 Kirim feedback atau ide fitur baru
 
 ### 📜 Lisensi
 
