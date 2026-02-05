@@ -89,9 +89,12 @@ EVENT-2025-Form/
 > 📸 Tambahkan screenshot website kamu di folder `/Asset`  
 > lalu ganti link di bawah ini
 
-```html
-<img src="Asset/preview.png" alt="Preview Website">
-```
+<p align="center">
+  <img src="Asset/ss1" alt="SS previw projek">
+  <img src="Asset/ss2" alt="SS previw projek">
+  <img src="Asset/ss3" alt="SS previw projek">
+  <img src="Asset/ss4" alt="SS previw projek">
+</p>
 
 ```🚀 Cara Menjalankan Project (Local)
 git clone https://github.com/abdussalam090207/EVENT-2025-Form.git
