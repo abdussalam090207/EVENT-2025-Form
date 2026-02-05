@@ -119,15 +119,15 @@ cd EVENT-2025-Form
 - Mudah diekspor ke Excel / CSV
 - Tidak memerlukan server hosting tambahan
 
-##👨‍💻 Developer
+## 👨‍💻 Developer
 
 *Abdus Salam
-*🎓 SMKN 26 Jakarta – SIJA
-*📌 EVENT 2025 Registration System
+* 🎓 SMKN 26 Jakarta – SIJA
+* 📌 EVENT 2025 Registration System
 
-*🔗 GitHub: abdussalam090207
+* 🔗 GitHub: <p> <a href="https://github.com/abdussalam090207"> abdussalam090207 </p>
 
-*⭐ Dukungan
+### ⭐ Dukungan
 
 Jika project ini bermanfaat:
 
@@ -137,7 +137,7 @@ Jika project ini bermanfaat:
 
 💬 Kirim feedback atau ide fitur baru
 
-###📜 Lisensi
+### 📜 Lisensi
 
 > Project ini dibuat untuk kebutuhan edukasi dan event.
 > Bebas digunakan dan dikembangkan dengan mencantumkan kredit.
