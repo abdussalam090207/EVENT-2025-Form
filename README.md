@@ -98,10 +98,12 @@ EVENT-2025-Form/
 
 ```
 git clone https://github.com/abdussalam090207/EVENT-2025-Form.git
+```
+```
 cd EVENT-2025-Form
 ```
 
-## ⚙️ Konfigurasi Google Apps Script
+### ⚙️ Konfigurasi Google Apps Script
 
 - Buat project Google Apps Script
 - Hubungkan ke Google Spreadsheet
@@ -112,14 +114,14 @@ cd EVENT-2025-Form
 
 ---
 
-## 📊 Database
+### 📊 Database
 
 - Semua data peserta tersimpan otomatis
 - Real-time & aman
 - Mudah diekspor ke Excel / CSV
 - Tidak memerlukan server hosting tambahan
 
-## 👨‍💻 Developer
+### 👨‍💻 Developer
 
 **Abdus Salam**
 * 🎓 SMKN 26 Jakarta – SIJA
